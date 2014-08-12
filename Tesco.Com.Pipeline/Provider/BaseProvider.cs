@@ -12,6 +12,7 @@ using Tesco.Com.Pipeline.API;
 using Tesco.Com.Pipeline.Utilities;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Configuration;
 namespace Tesco.Com.Pipeline.Provider
 {
     public class BaseProvider
@@ -30,9 +31,11 @@ namespace Tesco.Com.Pipeline.Provider
 
             var httpClientHandler = new HttpClientHandler
             {
-                Proxy = new WebProxy("http://localhost:8888", false),
+                Proxy = ConfigurationManager.AppSettings["proxy"].Equals("default") || string.IsNullOrEmpty(ConfigurationManager.AppSettings["proxy"]) ?
+                WebRequest.DefaultWebProxy :
+                new WebProxy(ConfigurationManager.AppSettings["proxy"], false),                
                 UseProxy = true
-                //Proxy = WebRequest.DefaultWebProxy
+                
             };
 
             //TODO: read up HttpCleint and refactor
