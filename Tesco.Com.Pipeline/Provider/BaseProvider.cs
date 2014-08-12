@@ -10,7 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 using Tesco.Com.Pipeline.API;
 using Tesco.Com.Pipeline.Utilities;
-
+using System.Net.Http;
+using System.Net.Http.Headers;
 namespace Tesco.Com.Pipeline.Provider
 {
     public class BaseProvider
@@ -25,24 +26,41 @@ namespace Tesco.Com.Pipeline.Provider
             if (isGenericType)
                 obj = Utilities.HelperMethods.CreateGeneric(typeof(List<>), t);
 
-            var json = string.Empty;
-            WebClient client = new WebClient();
-            //todo: remove hard code authetication. Use request headers
-            client.Headers.Add("authorization",
-                "appKeyToken=DotnetHostUser001&appKey=F28AE227-529A-488D-A955-A0CD0048EC89&,");
-            client.Headers.Add("accept", "application/json");
-            client.Headers.Add("Content-Type", "application/json");
-            //--
-            Logger.Info("Body: " + body);
-            Logger.Info("uir: " + uri);
-            if (verb.Equals(HttpVerbs.Get))
-                json = client.DownloadString(uri);
-            else
-                json = client.UploadString(uri, body);
-            MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
+            Stream apiStream;
+
+            var httpClientHandler = new HttpClientHandler
+            {
+                Proxy = new WebProxy("http://localhost:8888", false),
+                UseProxy = true
+                //Proxy = WebRequest.DefaultWebProxy
+            };
+
+            //TODO: read up HttpCleint and refactor
+
+            using (HttpClient client = new HttpClient(httpClientHandler,true))
+            {
+                client.DefaultRequestHeaders.Add("accept", "application/json");
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                ////todo: remove hard code authetication. Use request headers
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", "appKeyToken=DotnetHostUser001&appKey=F28AE227-529A-488D-A955-A0CD0048EC89&");
+                Logger.Info("Logging Request: uri: {0}. Body: {1}.");
+                
+
+                //TODO: Add delete
+                switch (verb)
+                {
+                    case HttpVerbs.Post:
+                    case HttpVerbs.Put:
+                        apiStream = client.PostAsync(uri, new StringContent(body)).Result.Content.ReadAsStreamAsync().Result;
+                        break;
+                    default:
+                        apiStream = client.GetAsync(uri).Result.Content.ReadAsStreamAsync().Result;
+                        break;
+                }
+            }  
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
-            obj = serializer.ReadObject(ms);
-            ms.Close();
+            obj = serializer.ReadObject(apiStream);
+            apiStream.Close();
             return obj;
         }
 
