@@ -13,7 +13,15 @@ namespace Tesco.Com.Pipeline.Controllers
 {
     public class NavigationController : ApiController
     {
-        INavigationProvider navigationProvider = new GAPINavigationProvider();
+        private readonly INavigationProvider _navigationProvider;
+
+        public NavigationController(){}
+
+        public NavigationController(INavigationProvider navigationProvider)
+        {
+            _navigationProvider = navigationProvider;
+        }
+        
 
         [System.Web.Http.HttpGet]
         public Hierarchy Get(string type, string taxonomyId="", string storeId="", string business="Grocery")
@@ -30,7 +38,7 @@ namespace Tesco.Com.Pipeline.Controllers
                 }
                 else
                 {
-                    hierarchy = navigationProvider.GetNavigation(type, taxonomyId, business, storeId);
+                    hierarchy = _navigationProvider.GetNavigation(type, taxonomyId, business, storeId);
                 }
                 return hierarchy;
             }
@@ -48,7 +56,7 @@ namespace Tesco.Com.Pipeline.Controllers
             try
             {
                 //TODO: make it async              
-                var hierarchy = navigationProvider.GetNavigation(type, taxonomyId, business);
+                var hierarchy = _navigationProvider.GetNavigation(type, taxonomyId, business);
                 return hierarchy;
             }
             catch (Exception ex)
