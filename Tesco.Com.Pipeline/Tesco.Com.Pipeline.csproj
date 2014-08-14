@@ -183,6 +183,7 @@
     <Compile Include="Provider\BaseProvider.cs" />
     <Compile Include="Provider\Contract\INavigationProvider.cs" />
     <Compile Include="Provider\GAPI\GAPINavigationProvider.cs" />
+    <Compile Include="Utilities\ApiException.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\Logger.cs" />
   </ItemGroup>
