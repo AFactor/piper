@@ -24,7 +24,7 @@ namespace Tesco.Com.Pipeline.Controllers
         
 
         [System.Web.Http.HttpGet]
-        public Hierarchy Get(string type, string taxonomyId="", string storeId="", string business="Grocery")
+        public Hierarchy Get(string type, string taxonomyId="", string business="Grocery", string storeId="")
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Tesco.Com.Pipeline.Controllers
             catch (Exception ex)
             {
                 //need to do something here.
-                Logger.Error("Search", ex);
+                Logger.Error("Navigation Get exception: ", ex);
                 throw;
             }
         }
@@ -55,16 +55,16 @@ namespace Tesco.Com.Pipeline.Controllers
         {
             try
             {
-                //TODO: make it async              
                 var hierarchy = _navigationProvider.GetNavigation(type, taxonomyId, business);
                 return hierarchy;
             }
             catch (Exception ex)
             {
                 //need to do something here.
-                Logger.Error("Search", ex);
+                Logger.Error("Anonymous navigation Get exception: ", ex);
                 throw;
             }
+            
         }
     }
 }
