@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define ProductGuid="*" ?>
+  <?define UpgradeCode = "{E3C05267-B844-43A8-AE3C-7F2A2B4DDC61}" ?>
+</Include>
