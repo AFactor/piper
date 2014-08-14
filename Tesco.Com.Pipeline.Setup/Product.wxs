@@ -31,7 +31,7 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ROOT_DRIVE" Name="ROOT_DRIVE">
         <Directory Id="Tesco" Name="Tesco">
-          <Directory Id="Com" Name="Com">
+          <Directory Id="Horizon" Name="Horizon">
             <Directory Id="FolderRoot" Name="Pipeline">
             <Component Id="ProductRegistryEntry" Guid="*" >
               <!--GUID can be a * becuase major upgrades don't care about same GUIDS.-->
