@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- MSI Package Name - Name you will givew to the compiled msi file -->
+  <?define PackageName        	  = "Tesco.Com.Pipeline.Setup" ?>
+  
+  <!-- ProductName - Name that you want to appear in Add Remove Programs, version will be appended -->
+  <?define ProductName        	  = "Tesco Com Pipeline" ?>
+  
+  <!-- Description - the text that will appear in Control Panel-->
+  <?define Description            = "Tesco Com Pipeline" ?>
+
+  <!-- Default Version -->
+  <?define Version = "$(var.ProductVersion)"?>
+  
+  <!-- Default Label -->
+  <?define Label = "$(var.BuildLabel)"?>
+
+  <!-- Deployed Registry Key Set-->
+  <?define DeployedRegistryKey = "Software\Tesco\Deployed"?>
+  </Include>

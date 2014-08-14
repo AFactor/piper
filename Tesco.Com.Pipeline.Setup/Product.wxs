@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Include the references to the Project and the GUIDS inclusion-->
+<?include Project.wxi ?>
+<?include Guids.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:iis='http://schemas.microsoft.com/wix/IIsExtension'>
+	<Product Id="$(var.ProductGuid)" Name="$(var.ProductName) ($(var.Version))" Language="1033" Version="$(var.Version)" Manufacturer="Tesco" UpgradeCode="$(var.UpgradeCode)">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Media Id="1" Cabinet="Res.cab" EmbedCab="yes" CompressionLevel="high"/>
+    <!-- This forces on to the D: Drive-->
+    <Property Id='ROOT_DRIVE' Value='D:\' />
+    <Property Id="ARPNOMODIFY" Value="1" />
+    <Property Id="REINSTALLMODE" Value="amus" />
+    <CustomActionRef Id="WixExitEarlyWithSuccess" />
+
+    <!-- The Features to be installed -->
+    <Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
+      <ComponentGroupRef Id="TescoComponentGroup"/>
+    </Feature>
+    
+    <Upgrade Id='$(var.UpgradeCode)'>
+      <UpgradeVersion Minimum='0.0.0.0' IncludeMinimum='yes' Maximum='255.255.65535.255' IncludeMaximum='yes' Property='UPGRADEFOUND' />
+    </Upgrade>
+    
+    <!-- Custom Actions -->
+    <InstallExecuteSequence>
+      <Custom Action='WixExitEarlyWithSuccess' After='FindRelatedProducts'>Installed AND NOT UPGRADEFOUND AND NOT Preselected</Custom>
+      <RemoveExistingProducts After='InstallInitialize' />
+    </InstallExecuteSequence>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ROOT_DRIVE" Name="ROOT_DRIVE">
+        <Directory Id="Tesco" Name="Tesco">
+          <Directory Id="Horizon" Name="Horizon">
+            <Directory Id="FolderRoot" Name="Pipeline">
+            <Component Id="ProductRegistryEntry" Guid="*" >
+              <!--GUID can be a * becuase major upgrades don't care about same GUIDS.-->
+              <RegistryKey Root="HKLM" Key="$(var.DeployedRegistryKey)\$(var.PackageName)" ForceCreateOnInstall ="yes"  ForceDeleteOnUninstall ="yes">
+                <RegistryValue Type="string" Name="ProductCode" Value="[ProductCode]" KeyPath="yes"/>
+                <RegistryValue Type="string" Name="ProductVersion" Value="[ProductVersion]"/>
+                <RegistryValue Type="string" Name="Label" Value="$(var.Label)"/>
+                <RegistryValue Type="string" Name="UpgradeCode" Value="[UpgradeCode]"/>
+              </RegistryKey>
+            </Component>
+          </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+		</Directory>
+	</Product>
+</Wix>
