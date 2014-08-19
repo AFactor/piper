@@ -25,7 +25,7 @@ Then you want to set ruby 2.0.0 as your default:
 
 ##Installing required gems
 
-Go to the Horizon-Tests `gem install bundler` and then `bundle install`
+Go to the root of the tests folder and run `gem install bundler` and then `bundle install`
 
 
 These two commands will install all the gems that the tests need.
