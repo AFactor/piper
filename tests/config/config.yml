@@ -1,0 +1,5 @@
+test:
+  navigation_base_url: http://172.28.150.24:8080/Pipeline/api/Navigation/
+  type_all: Get?type=all
+  type_super_department: Get?type=superdepartment
+  type_department: Get?type=department&taxonomyid=
