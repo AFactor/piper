@@ -8,6 +8,7 @@ using Tesco.Com.Pipeline.Entities.NavigationEntities;
 using Tesco.Com.Pipeline.Provider.Contract;
 using Tesco.Com.Pipeline.Provider.GAPI;
 using Tesco.Com.Pipeline.Utilities;
+using System.Threading.Tasks;
 
 namespace Tesco.Com.Pipeline.Controllers
 {
@@ -15,54 +16,50 @@ namespace Tesco.Com.Pipeline.Controllers
     {
         private readonly INavigationProvider _navigationProvider;
 
-        public NavigationController(){}
+        public NavigationController() { }
 
         public NavigationController(INavigationProvider navigationProvider)
         {
             _navigationProvider = navigationProvider;
         }
-        
+
 
         [System.Web.Http.HttpGet]
-        public Hierarchy Get(string type, string taxonomyId="", string storeId="", string business="Grocery")
+        public Hierarchy Get(string type, string taxonomyId = "", string business = "Grocery", string storeId = "")
         {
             try
             {
                 Logger.Info("Request received");
-                //TODO: make it async              
-                //CHECK IF NO STORE ID AND IS ANNOMOUS. IF YES, PASS IT TO THE OTHER GET
-                Hierarchy hierarchy;
+                //CHECK IF NO STORE ID AND IS ANONYMOUS. IF YES, PASS IT TO THE OTHER GET
                 if (string.IsNullOrEmpty(storeId))
                 {
                     return Get(type, taxonomyId, business);
                 }
                 else
                 {
-                    hierarchy = _navigationProvider.GetNavigation(type, taxonomyId, business, storeId);
+                    return _navigationProvider.GetNavigation(type, taxonomyId, business, storeId);
                 }
-                return hierarchy;
+
             }
             catch (Exception ex)
             {
                 //need to do something here.
-                Logger.Error("Search", ex);
+                Logger.Error("Navigation Get", ex);
                 throw;
             }
         }
 
 
-        private Hierarchy Get(string type, string taxonomyId,  string business)
+        private Hierarchy Get(string type, string taxonomyId, string business)
         {
             try
             {
-                //TODO: make it async              
-                var hierarchy = _navigationProvider.GetNavigation(type, taxonomyId, business);
-                return hierarchy;
+                return _navigationProvider.GetNavigation(type, taxonomyId, business);
             }
             catch (Exception ex)
             {
                 //need to do something here.
-                Logger.Error("Search", ex);
+                Logger.Error("Anonymous Navigation Get", ex);
                 throw;
             }
         }

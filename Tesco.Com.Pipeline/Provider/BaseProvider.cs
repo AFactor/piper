@@ -84,8 +84,19 @@ namespace Tesco.Com.Pipeline.Provider
             }
             catch(ApiException apx)
             {                
+                string exceptionDetails = ". Exception Details : ";
+                string statusCode = apx.StatusCode.ToString();
+                var values = apx.Headers.GetValues("X-TescoMessage");
+                if (values != null)
+                {
+                    foreach (var item in values)
+                    {
+                        exceptionDetails += item;
+                    }
+                }
                 
-                throw;
+                string errorMsg = String.Concat(apx.Message, " Code: ", statusCode, exceptionDetails);
+                throw new ApplicationException(errorMsg);
             }
         }
 
