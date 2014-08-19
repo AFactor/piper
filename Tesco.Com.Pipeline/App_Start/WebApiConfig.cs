@@ -31,7 +31,7 @@ namespace Tesco.Com.Pipeline
             //       action = "Search"
             //   });
 
-            config.Routes.MapHttpRoute(null, "api/Navigation/Get",
+            config.Routes.MapHttpRoute(null, "Navigation/",
                 new
                 {
                     controller = "Navigation",

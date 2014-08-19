@@ -10,6 +10,8 @@ namespace Tesco.Com.Pipeline.Utilities
 {
     public class ApiException : Exception
     {
+        public ApiException(){}
+
         public ApiException(HttpStatusCode code, HttpResponseHeaders headers):base("Api returned error with status code " + code + ". Check headers for details.")
         {
             StatusCode = code;
