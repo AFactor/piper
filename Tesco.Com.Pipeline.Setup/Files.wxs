@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="FolderRoot">
+            <Component Id="Global.asax" Guid="{8904EDA8-5648-4CF8-9D6C-73C592EB9483}">
+                <File Id="Global.asax" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Global.asax" />
+            </Component>
+            <Component Id="packages.config" Guid="{A91E143D-8DA6-4CC8-AFBE-736F968B311A}">
+                <File Id="packages.config" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\packages.config" />
+            </Component>
+            <Component Id="Web.config" Guid="{0EF62572-A9BF-4CDE-A6F5-D47B71D5DF94}">
+                <File Id="Web.config" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Web.config" />
+            </Component>
+            <Directory Id="Areas" Name="Areas">
+                <Directory Id="HelpPage" Name="HelpPage">
+                    <Component Id="HelpPage.css" Guid="{9C46E7FD-32F9-4BDD-86A4-52DB6832CCBE}">
+                        <File Id="HelpPage.css" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\HelpPage.css" />
+                    </Component>
+                    <Directory Id="Views" Name="Views">
+                        <Component Id="Web.config_1" Guid="{6E582E9F-2A7E-43D8-98FB-F870F33CAF10}">
+                            <File Id="Web.config_1" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Web.config" />
+                        </Component>
+                        <Component Id="_ViewStart.cshtml" Guid="{72128980-3763-4F11-8B2C-423AE377388D}">
+                            <File Id="_ViewStart.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\_ViewStart.cshtml" />
+                        </Component>
+                        <Directory Id="Help" Name="Help">
+                            <Component Id="Api.cshtml" Guid="{F6AFE035-35C6-4B4A-9BFB-5E3A60D29BC7}">
+                                <File Id="Api.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\Api.cshtml" />
+                            </Component>
+                            <Component Id="Index.cshtml" Guid="{EB2A2159-EC54-4276-BA8D-678FF64DD66A}">
+                                <File Id="Index.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\Index.cshtml" />
+                            </Component>
+                            <Component Id="ResourceModel.cshtml" Guid="{43C20AC4-CDD1-4FAD-AA50-02EF2B983F64}">
+                                <File Id="ResourceModel.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+                            </Component>
+                            <Directory Id="DisplayTemplates" Name="DisplayTemplates">
+                                <Component Id="ApiGroup.cshtml" Guid="{F00823C1-ED08-4B9B-AE75-89BA971D5C7E}">
+                                    <File Id="ApiGroup.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+                                </Component>
+                                <Component Id="CollectionModelDescription.cshtml" Guid="{1491FD3E-0191-46D8-869B-A29EA7DF4226}">
+                                    <File Id="CollectionModelDescription.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+                                </Component>
+                                <Component Id="ComplexTypeModelDescription.cshtml" Guid="{4061ADD1-8FDB-4120-BFA0-33EA999910F3}">
+                                    <File Id="ComplexTypeModelDescription.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+                                </Component>
+                                <Component Id="DictionaryModelDescription.cshtml" Guid="{DE04F773-B31F-4860-8ECF-0C8491C9DC20}">
+                                    <File Id="DictionaryModelDescription.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+                                </Component>
+                                <Component Id="EnumTypeModelDescription.cshtml" Guid="{F639F8D8-E8A0-44C6-A141-7294C399DE6A}">
+                                    <File Id="EnumTypeModelDescription.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+                                </Component>
+                                <Component Id="HelpPageApiModel.cshtml" Guid="{4ACB9938-3C86-4041-AEC7-2A9F46BE5062}">
+                                    <File Id="HelpPageApiModel.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+                                </Component>
+                                <Component Id="ImageSample.cshtml" Guid="{C8C28046-7088-4551-B8A4-C521719E27E2}">
+                                    <File Id="ImageSample.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+                                </Component>
+                                <Component Id="InvalidSample.cshtml" Guid="{7E333029-7E9E-4623-B326-6EEDEBDD0675}">
+                                    <File Id="InvalidSample.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+                                </Component>
+                                <Component Id="KeyValuePairModelDescription.cshtml" Guid="{23AC76AB-F517-42A4-A263-AD05CF323134}">
+                                    <File Id="KeyValuePairModelDescription.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+                                </Component>
+                                <Component Id="ModelDescriptionLink.cshtml" Guid="{9B0AA8CA-9FA1-4776-A520-1840BC754A00}">
+                                    <File Id="ModelDescriptionLink.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+                                </Component>
+                                <Component Id="Parameters.cshtml" Guid="{794C9DBB-D170-45B3-B898-E2264505C020}">
+                                    <File Id="Parameters.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+                                </Component>
+                                <Component Id="Samples.cshtml" Guid="{E20FA834-5DDD-45E0-9CEB-A88D5463191C}">
+                                    <File Id="Samples.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+                                </Component>
+                                <Component Id="SimpleTypeModelDescription.cshtml" Guid="{B17B3C84-CDEB-4253-A1CE-168EBDFC0AB8}">
+                                    <File Id="SimpleTypeModelDescription.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+                                </Component>
+                                <Component Id="TextSample.cshtml" Guid="{95114032-F862-4ED6-A67F-472EED9E1990}">
+                                    <File Id="TextSample.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="Shared" Name="Shared">
+                            <Component Id="_Layout.cshtml" Guid="{A6F97C97-A031-4712-9926-88AA8FEFF7BF}">
+                                <File Id="_Layout.cshtml" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="bin" Name="bin">
+                <Component Id="log4net.dll" Guid="{8A4D1070-EB6F-4C6F-AB48-E95C27306748}">
+                    <File Id="log4net.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\log4net.dll" />
+                </Component>
+                <Component Id="Microsoft.Practices.Unity.Configuration.dll" Guid="{254CEE24-FEDE-4D70-891E-E022BEBC5981}">
+                    <File Id="Microsoft.Practices.Unity.Configuration.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Microsoft.Practices.Unity.Configuration.dll" />
+                </Component>
+                <Component Id="Microsoft.Practices.Unity.dll" Guid="{7CFA9A82-933F-49E0-A993-CC3171D7A19C}">
+                    <File Id="Microsoft.Practices.Unity.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Microsoft.Practices.Unity.dll" />
+                </Component>
+                <Component Id="Microsoft.Practices.Unity.RegistrationByConvention.dll" Guid="{DB96B125-DE17-460D-B87F-C1101D03D4BD}">
+                    <File Id="Microsoft.Practices.Unity.RegistrationByConvention.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+                </Component>
+                <Component Id="Microsoft.Practices.Unity.WebApi.dll" Guid="{8B709DEC-56F4-44F7-85F7-DEC7FC06A55E}">
+                    <File Id="Microsoft.Practices.Unity.WebApi.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Microsoft.Practices.Unity.WebApi.dll" />
+                </Component>
+                <Component Id="Microsoft.Web.Infrastructure.dll" Guid="{729455F3-A76D-4FBB-9742-F08D81D1BBE3}">
+                    <File Id="Microsoft.Web.Infrastructure.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Microsoft.Web.Infrastructure.dll" />
+                </Component>
+                <Component Id="Newtonsoft.Json.dll" Guid="{CDE7C6DE-38D5-4E1E-BBF0-56C214CE55B7}">
+                    <File Id="Newtonsoft.Json.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Newtonsoft.Json.dll" />
+                </Component>
+                <Component Id="System.Net.Http.Formatting.dll" Guid="{D77C1F5F-2599-4402-AD82-32D9EE047149}">
+                    <File Id="System.Net.Http.Formatting.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Net.Http.Formatting.dll" />
+                </Component>
+                <Component Id="System.Web.Helpers.dll" Guid="{23D9333B-A3FC-478C-8E49-A321D19C8BEE}">
+                    <File Id="System.Web.Helpers.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.Helpers.dll" />
+                </Component>
+                <Component Id="System.Web.Http.dll" Guid="{31FE39C7-2F52-42F0-BD60-5365C49F6620}">
+                    <File Id="System.Web.Http.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.Http.dll" />
+                </Component>
+                <Component Id="System.Web.Http.WebHost.dll" Guid="{DECB2135-DED0-418A-830C-6667305102DB}">
+                    <File Id="System.Web.Http.WebHost.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.Http.WebHost.dll" />
+                </Component>
+                <Component Id="System.Web.Mvc.dll" Guid="{CB71B5E1-C0D0-4152-A154-CB5ADB45B7CE}">
+                    <File Id="System.Web.Mvc.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.Mvc.dll" />
+                </Component>
+                <Component Id="System.Web.Razor.dll" Guid="{05DEF59C-C9BF-43C2-924B-825C4EA609DD}">
+                    <File Id="System.Web.Razor.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.Razor.dll" />
+                </Component>
+                <Component Id="System.Web.WebPages.Deployment.dll" Guid="{16C6DD0C-5691-4673-9899-E1390BBE19AC}">
+                    <File Id="System.Web.WebPages.Deployment.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.WebPages.Deployment.dll" />
+                </Component>
+                <Component Id="System.Web.WebPages.dll" Guid="{ED8EBFF7-5290-480F-9521-1182882842BB}">
+                    <File Id="System.Web.WebPages.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.WebPages.dll" />
+                </Component>
+                <Component Id="System.Web.WebPages.Razor.dll" Guid="{A712CE54-7EFC-49F0-89FA-B19651C91D99}">
+                    <File Id="System.Web.WebPages.Razor.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\System.Web.WebPages.Razor.dll" />
+                </Component>
+                <Component Id="Tesco.Com.Pipeline.dll" Guid="{C9086D15-2A54-49F4-A807-F450323047E6}">
+                    <File Id="Tesco.Com.Pipeline.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\Tesco.Com.Pipeline.dll" />
+                </Component>
+                <Component Id="WebActivatorEx.dll" Guid="{7A74BEAD-D930-4701-A1AD-B49CC7592757}">
+                    <File Id="WebActivatorEx.dll" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\bin\WebActivatorEx.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="Config" Name="Config">
+                <Component Id="api.config" Guid="{2826011B-89C9-4286-B53E-3248DC5C21BC}">
+                    <File Id="api.config" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Config\api.config" />
+                </Component>
+                <Component Id="app.config" Guid="{8901C0DC-C4D8-4336-B87D-6EF52A931189}">
+                    <File Id="app.config" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Config\app.config" />
+                </Component>
+                <Component Id="Logger.config" Guid="{6EFDD666-6486-44F9-A850-C019D919FCDC}">
+                    <File Id="Logger.config" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Config\Logger.config" />
+                </Component>
+                <Component Id="unity.config" Guid="{55C10EEC-EBA0-4334-98A1-C0A1FDB90AC4}">
+                    <File Id="unity.config" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Config\unity.config" />
+                </Component>
+            </Directory>
+            <Directory Id="Content" Name="Content">
+                <Component Id="bootstrap_theme.css" Guid="{A762DA92-9CB8-4F99-ABB2-A051B02A0B94}">
+                    <File Id="bootstrap_theme.css" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Content\bootstrap-theme.css" />
+                </Component>
+                <Component Id="bootstrap_theme.css.map" Guid="{179BCB7B-B50B-4E08-ADB5-CDE706EDFCB1}">
+                    <File Id="bootstrap_theme.css.map" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Content\bootstrap-theme.css.map" />
+                </Component>
+                <Component Id="bootstrap_theme.min.css" Guid="{31C49F8B-7FF5-4F0C-8324-F4905C69859B}">
+                    <File Id="bootstrap_theme.min.css" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Content\bootstrap-theme.min.css" />
+                </Component>
+                <Component Id="bootstrap.css" Guid="{DC7034CF-9F6D-4779-A11D-8E3BA2BD8571}">
+                    <File Id="bootstrap.css" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Content\bootstrap.css" />
+                </Component>
+                <Component Id="bootstrap.css.map" Guid="{90391574-E267-4FCC-A994-385BF553E42C}">
+                    <File Id="bootstrap.css.map" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Content\bootstrap.css.map" />
+                </Component>
+                <Component Id="bootstrap.min.css" Guid="{960C4CB8-0779-4CC4-AED8-4D30E5827C3A}">
+                    <File Id="bootstrap.min.css" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Content\bootstrap.min.css" />
+                </Component>
+            </Directory>
+            <Directory Id="fonts" Name="fonts">
+                <Component Id="glyphicons_halflings_regular.eot" Guid="{633E24A6-2842-451E-AA41-3B348F0293D8}">
+                    <File Id="glyphicons_halflings_regular.eot" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\fonts\glyphicons-halflings-regular.eot" />
+                </Component>
+                <Component Id="glyphicons_halflings_regular.svg" Guid="{DADF74FF-BD61-49B3-9994-1BB192D46F75}">
+                    <File Id="glyphicons_halflings_regular.svg" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\fonts\glyphicons-halflings-regular.svg" />
+                </Component>
+                <Component Id="glyphicons_halflings_regular.ttf" Guid="{0D585031-96DA-469D-872B-C2D4703B961E}">
+                    <File Id="glyphicons_halflings_regular.ttf" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\fonts\glyphicons-halflings-regular.ttf" />
+                </Component>
+                <Component Id="glyphicons_halflings_regular.woff" Guid="{BD19951F-38F3-44DE-9962-585544F6FC30}">
+                    <File Id="glyphicons_halflings_regular.woff" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\fonts\glyphicons-halflings-regular.woff" />
+                </Component>
+            </Directory>
+            <Directory Id="Scripts" Name="Scripts">
+                <Component Id="bootstrap.js" Guid="{B07F15BB-FBEE-44A1-B374-094B9ADA98A3}">
+                    <File Id="bootstrap.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\bootstrap.js" />
+                </Component>
+                <Component Id="bootstrap.min.js" Guid="{AD0B2779-B9AE-4B6B-8FB5-85C015F63AAD}">
+                    <File Id="bootstrap.min.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\bootstrap.min.js" />
+                </Component>
+                <Component Id="jquery_2.1.1.js" Guid="{98E72D57-281F-492C-B5A7-B370FCBC444B}">
+                    <File Id="jquery_2.1.1.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\jquery-2.1.1.js" />
+                </Component>
+                <Component Id="jquery_2.1.1.min.js" Guid="{5A33EB67-607F-4210-B201-76F7190155EF}">
+                    <File Id="jquery_2.1.1.min.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\jquery-2.1.1.min.js" />
+                </Component>
+                <Component Id="jquery_2.1.1.min.map" Guid="{BF78EB27-79A2-4EDF-9DA5-B25D7796691A}">
+                    <File Id="jquery_2.1.1.min.map" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\jquery-2.1.1.min.map" />
+                </Component>
+                <Component Id="modernizr_2.7.2.js" Guid="{89BA5DB1-C45E-47FC-B792-3E4CE1136203}">
+                    <File Id="modernizr_2.7.2.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\modernizr-2.7.2.js" />
+                </Component>
+                <Component Id="respond.js" Guid="{F930FC7F-F155-446F-8D78-8189BED3C7E7}">
+                    <File Id="respond.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\respond.js" />
+                </Component>
+                <Component Id="respond.matchmedia.addListener.js" Guid="{8556A5C8-E8E5-42E3-AF65-9956E99CB408}">
+                    <File Id="respond.matchmedia.addListener.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\respond.matchmedia.addListener.js" />
+                </Component>
+                <Component Id="respond.matchmedia.addListener.min.js" Guid="{E6263EEB-5F7E-4E46-8723-52D8A06E3C4A}">
+                    <File Id="respond.matchmedia.addListener.min.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\respond.matchmedia.addListener.min.js" />
+                </Component>
+                <Component Id="respond.min.js" Guid="{C8591350-3AFD-469E-A892-73523AA7D093}">
+                    <File Id="respond.min.js" KeyPath="yes" Source="$(var.Tesco.Com.Pipeline.ProjectDir)\Scripts\respond.min.js" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="Files">
+            <ComponentRef Id="Global.asax" />
+            <ComponentRef Id="packages.config" />
+            <ComponentRef Id="Web.config" />
+            <ComponentRef Id="HelpPage.css" />
+            <ComponentRef Id="Web.config_1" />
+            <ComponentRef Id="_ViewStart.cshtml" />
+            <ComponentRef Id="Api.cshtml" />
+            <ComponentRef Id="Index.cshtml" />
+            <ComponentRef Id="ResourceModel.cshtml" />
+            <ComponentRef Id="ApiGroup.cshtml" />
+            <ComponentRef Id="CollectionModelDescription.cshtml" />
+            <ComponentRef Id="ComplexTypeModelDescription.cshtml" />
+            <ComponentRef Id="DictionaryModelDescription.cshtml" />
+            <ComponentRef Id="EnumTypeModelDescription.cshtml" />
+            <ComponentRef Id="HelpPageApiModel.cshtml" />
+            <ComponentRef Id="ImageSample.cshtml" />
+            <ComponentRef Id="InvalidSample.cshtml" />
+            <ComponentRef Id="KeyValuePairModelDescription.cshtml" />
+            <ComponentRef Id="ModelDescriptionLink.cshtml" />
+            <ComponentRef Id="Parameters.cshtml" />
+            <ComponentRef Id="Samples.cshtml" />
+            <ComponentRef Id="SimpleTypeModelDescription.cshtml" />
+            <ComponentRef Id="TextSample.cshtml" />
+            <ComponentRef Id="_Layout.cshtml" />
+            <ComponentRef Id="log4net.dll" />
+            <ComponentRef Id="Microsoft.Practices.Unity.Configuration.dll" />
+            <ComponentRef Id="Microsoft.Practices.Unity.dll" />
+            <ComponentRef Id="Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+            <ComponentRef Id="Microsoft.Practices.Unity.WebApi.dll" />
+            <ComponentRef Id="Microsoft.Web.Infrastructure.dll" />
+            <ComponentRef Id="Newtonsoft.Json.dll" />
+            <ComponentRef Id="System.Net.Http.Formatting.dll" />
+            <ComponentRef Id="System.Web.Helpers.dll" />
+            <ComponentRef Id="System.Web.Http.dll" />
+            <ComponentRef Id="System.Web.Http.WebHost.dll" />
+            <ComponentRef Id="System.Web.Mvc.dll" />
+            <ComponentRef Id="System.Web.Razor.dll" />
+            <ComponentRef Id="System.Web.WebPages.Deployment.dll" />
+            <ComponentRef Id="System.Web.WebPages.dll" />
+            <ComponentRef Id="System.Web.WebPages.Razor.dll" />
+            <ComponentRef Id="Tesco.Com.Pipeline.dll" />
+            <ComponentRef Id="WebActivatorEx.dll" />
+            <ComponentRef Id="api.config" />
+            <ComponentRef Id="app.config" />
+            <ComponentRef Id="Logger.config" />
+            <ComponentRef Id="unity.config" />
+            <ComponentRef Id="bootstrap_theme.css" />
+            <ComponentRef Id="bootstrap_theme.css.map" />
+            <ComponentRef Id="bootstrap_theme.min.css" />
+            <ComponentRef Id="bootstrap.css" />
+            <ComponentRef Id="bootstrap.css.map" />
+            <ComponentRef Id="bootstrap.min.css" />
+            <ComponentRef Id="glyphicons_halflings_regular.eot" />
+            <ComponentRef Id="glyphicons_halflings_regular.svg" />
+            <ComponentRef Id="glyphicons_halflings_regular.ttf" />
+            <ComponentRef Id="glyphicons_halflings_regular.woff" />
+            <ComponentRef Id="bootstrap.js" />
+            <ComponentRef Id="bootstrap.min.js" />
+            <ComponentRef Id="jquery_2.1.1.js" />
+            <ComponentRef Id="jquery_2.1.1.min.js" />
+            <ComponentRef Id="jquery_2.1.1.min.map" />
+            <ComponentRef Id="modernizr_2.7.2.js" />
+            <ComponentRef Id="respond.js" />
+            <ComponentRef Id="respond.matchmedia.addListener.js" />
+            <ComponentRef Id="respond.matchmedia.addListener.min.js" />
+            <ComponentRef Id="respond.min.js" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
