@@ -48,7 +48,8 @@ namespace Tesco.Com.Pipeline.Provider
                 using (HttpClient client = new HttpClient(httpClientHandler, true))
                 {
                     client.DefaultRequestHeaders.Add("accept", "application/json");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                    
                     ////todo: remove hard code authetication. Use request headers
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", "appKeyToken=DotnetHostUser001&appKey=F28AE227-529A-488D-A955-A0CD0048EC89&");
                     Logger.Info(string.Format("Logging Request: uri: {0}. Body: {1}.", uri, body));
@@ -58,7 +59,11 @@ namespace Tesco.Com.Pipeline.Provider
                     {
                         case HttpVerbs.Post:
                         case HttpVerbs.Put:
-                            response = client.PostAsync(uri, new StringContent(body)).Result;
+                            using (HttpContent content = new StringContent(body))
+                            {
+                                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                                response = client.PostAsync(uri, content).Result;
+                            }
                             break;
                         default:
                             response = client.GetAsync(uri).Result;

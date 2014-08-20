@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Tesco.Com.Pipeline
 {
@@ -12,24 +13,18 @@ namespace Tesco.Com.Pipeline
             // Web API configuration and services
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
 
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
 
-            //config.Routes.MapHttpRoute(null, "api/Products/Search/{queryText}",
-            //   new
-            //   {
-            //       queryText = UrlParameter.Optional,
-            //       //pageNumber = UrlParameter.Optional,
-            //       //sort = UrlParameter.Optional,
-            //       //perpage = UrlParameter.Optional,
-            //       controller = "ProductPrice",
-            //       action = "Search"
-            //   });
+            config.Routes.MapHttpRoute(null, "Products/Search/{queryText}/",//?sort={sort}/page={pageNumber}/perpage={perpage}",
+            new
+            {
+                queryText = UrlParameter.Optional,
+                //pageNumber = UrlParameter.Optional,
+                //sort = UrlParameter.Optional,
+                //perpage = UrlParameter.Optional,
+                controller = "Product",
+                action = "Search"
+            });
 
             config.Routes.MapHttpRoute(null, "Navigation/",
                 new
