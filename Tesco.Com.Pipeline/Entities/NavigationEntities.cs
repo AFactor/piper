@@ -17,8 +17,6 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         [JsonIgnore]
         public string LevelName { get; set; }
 
-        public Child[] Children { get; set; }
-
         public string Type
         {
             get { return HelperMethods.Extract(LevelName, "type", ','); }
@@ -43,6 +41,8 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         {
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
+
+        public Child[] Children { get; set; }
     }
 
     public class Child
@@ -53,9 +53,7 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
 
         [JsonIgnore]
         public string LevelName { get; set; }
-
-        public Child[] Children { get; set; }
-
+        
         public string Type
         {
             get { return HelperMethods.Extract(LevelName, "type", ','); }
@@ -80,5 +78,7 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         {
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
+
+        public Child[] Children { get; set; }
     }
 }
