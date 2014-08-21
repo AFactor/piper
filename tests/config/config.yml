@@ -1,10 +1,10 @@
+defaults: &defaults
+  type_all: ?type=all
+  type_super_department: ?type=superdepartment
+  type_department: ?type=department&taxonomyid=
 test_env_one:
+  <<: *defaults
   navigation_base_url: http://localhost:8080/Pipeline/Navigation
-  type_all: ?type=all
-  type_super_department: ?type=superdepartment
-  type_department: ?type=department&taxonomyid=
 test:
+  <<: *defaults
   navigation_base_url: http://172.28.150.24:8080/Pipeline/Navigation
-  type_all: ?type=all
-  type_super_department: ?type=superdepartment
-  type_department: ?type=department&taxonomyid=

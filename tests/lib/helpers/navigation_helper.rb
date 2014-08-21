@@ -1,15 +1,15 @@
 class NavigationHelper
 
   def self.create_super_department_url
-    ConfigurationManager.load_config('config', ENV['ENVIRONMENT'])['navigation_base_url'] + ConfigurationManager.load_config('config', ENV['ENVIRONMENT'])['type_super_department']
+    ApiConfig.navigation_base_url + ApiConfig.type_super_department
   end
 
   def self.create_department_url(taxonomy_id)
-    ConfigurationManager.load_config('config', ENV['ENVIRONMENT'])['navigation_base_url'] + ConfigurationManager.load_config('config', ENV['ENVIRONMENT'])['type_department']+taxonomy_id
+    ApiConfig.navigation_base_url + ApiConfig.type_department + taxonomy_id
   end
 
   def self.create_all_levels_url
-    ConfigurationManager.load_config('config', ENV['ENVIRONMENT'])['navigation_base_url'] + ConfigurationManager.load_config('config', ENV['ENVIRONMENT'])['type_all']
+    ApiConfig.navigation_base_url + ApiConfig.type_all
   end
 
   def self.get_all_levels
