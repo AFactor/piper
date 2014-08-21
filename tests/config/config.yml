@@ -1,3 +1,8 @@
+test_env_one:
+  navigation_base_url: http://localhost:8080/Pipeline/Navigation
+  type_all: ?type=all
+  type_super_department: ?type=superdepartment
+  type_department: ?type=department&taxonomyid=
 test:
   navigation_base_url: http://172.28.150.24:8080/Pipeline/Navigation
   type_all: ?type=all
