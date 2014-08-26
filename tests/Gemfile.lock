@@ -20,6 +20,7 @@ GEM
     rspec-mocks (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    settingslogic (2.0.9)
 
 PLATFORMS
   ruby
@@ -28,3 +29,4 @@ DEPENDENCIES
   json
   rest-client
   rspec
+  settingslogic
