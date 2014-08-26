@@ -134,7 +134,10 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Entities\ProductList.cs" />
+    <Compile Include="Provider\Contract\IProductBrowseProvider.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\ProductBrowseController.cs" />
     <Compile Include="Entities\NavigationEntities.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +146,7 @@
     <Compile Include="Provider\BaseProvider.cs" />
     <Compile Include="Provider\Contract\INavigationProvider.cs" />
     <Compile Include="Provider\GAPI\GAPINavigationProvider.cs" />
+    <Compile Include="Provider\GAPI\GAPIProductBrowseProvider.cs" />
     <Compile Include="Utilities\ApiException.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\Logger.cs" />
