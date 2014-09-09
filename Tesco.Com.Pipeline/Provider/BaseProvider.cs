@@ -38,7 +38,7 @@ namespace Tesco.Com.Pipeline.Provider
                     Proxy = ConfigurationManager.AppSettings["proxy"].Equals("default") || string.IsNullOrEmpty(ConfigurationManager.AppSettings["proxy"]) ?
                     WebRequest.DefaultWebProxy :
                     new WebProxy(ConfigurationManager.AppSettings["proxy"], false),
-                    UseProxy = true
+                    UseProxy = false
 
                 };
 
@@ -70,7 +70,7 @@ namespace Tesco.Com.Pipeline.Provider
                     apiStream = response.Content.ReadAsStreamAsync().Result;
                 else
                 {
-                    
+
                     throw new ApiException(response.StatusCode, response.Headers);
 
                 }

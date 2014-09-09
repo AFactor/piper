@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tesco.com/appstore/proxy/1" elementFormDefault="qualified" targetNamespace="http://tesco.com/appstore/proxy/1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd2" namespace="http://tesco.com/appstore/messages/1" />
+  <xs:element name="Send">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://tesco.com/appstore/messages/1" minOccurs="0" name="request" nillable="true" type="q1:RequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://tesco.com/appstore/messages/1" minOccurs="0" name="SendResult" nillable="true" type="q2:ResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendRequestXml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="requestXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendRequestXmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendRequestXmlResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Post">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://tesco.com/appstore/messages/1" minOccurs="0" name="request" nillable="true" type="q3:RequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -23,11 +23,14 @@ namespace Tesco.Com.Pipeline.Controllers
 
 
         [System.Web.Http.HttpGet]
-        public ProductList GetProductList(string query, string offset, string limit, string business = "Grocery")
+        public ProductList GetProductList(string query, string offset, string limit, string orderByFields = "Default", string business = "Grocery")
         {
+            ProductList productLIst = null;
             try
             {
-                return _productBrowseProvider.GetProductList(query, offset, limit, business);
+                productLIst = _productBrowseProvider.GetProductList(query, offset, limit, orderByFields, business);
+                
+                return productLIst;
             }
             catch (Exception ex)
             {

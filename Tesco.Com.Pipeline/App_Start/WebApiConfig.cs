@@ -46,6 +46,13 @@ namespace Tesco.Com.Pipeline
                     action = "GetProductList"
                 });
 
+            config.Routes.MapHttpRoute(null, "DeviceIdentification/",
+                new
+                {
+                    controller = "DeviceIdentification",
+                    action = "GetDeviceFamily"
+                });
+            
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             var settings = json.SerializerSettings;

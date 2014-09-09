@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tesco.Com.Pipeline.Entities
 {
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
@@ -80,5 +80,7 @@ namespace Tesco.Com.Pipeline.Entities
         }
     }
 
+    
+    
 
 }
