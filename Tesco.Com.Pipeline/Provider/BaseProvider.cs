@@ -38,7 +38,7 @@ namespace Tesco.Com.Pipeline.Provider
                     Proxy = ConfigurationManager.AppSettings["proxy"].Equals("default") || string.IsNullOrEmpty(ConfigurationManager.AppSettings["proxy"]) ?
                     WebRequest.DefaultWebProxy :
                     new WebProxy(ConfigurationManager.AppSettings["proxy"], false),
-                    UseProxy = false
+                    UseProxy = true
 
                 };
 
