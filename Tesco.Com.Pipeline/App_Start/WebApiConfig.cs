@@ -22,7 +22,7 @@ namespace Tesco.Com.Pipeline
                 //pageNumber = UrlParameter.Optional,
                 //sort = UrlParameter.Optional,
                 //perpage = UrlParameter.Optional,
-                controller = "Product",
+                controller = "ProductETL",
                 action = "Search"
             });
 

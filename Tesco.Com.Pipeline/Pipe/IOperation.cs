@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tesco.Com.Pipeline.Pipe
 {
-    public interface IOperation<T>
+
+
+    public abstract class BaseOperation<T>
     {
-        IEnumerable<T> Execute(IEnumerable<T> input);
+        public string[] ParamArray { get; set; }
+        public abstract IEnumerable<T> Execute(IEnumerable<T> input);
     }
+
 }

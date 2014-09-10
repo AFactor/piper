@@ -33,7 +33,7 @@ namespace Tesco.Com.Pipeline.Controllers
         }
 
         [System.Web.Http.HttpGet]
-        public ProductResult Search(string queryText, int pageNumber, string sort, int perPage)
+        public List<ResultETL> Search(string queryText, int pageNumber, string sort, int perPage)
         {
             try
             {
@@ -63,9 +63,10 @@ namespace Tesco.Com.Pipeline.Controllers
                 //promos = promotionProvider.Search(ids, null, 1000, 0) ;
                 #endregion
 
-                Mix(products, prices, promos);
                 Logger.Info("Mixing done");
-                return products;
+                return Mix(products, prices, promos);
+                
+                
 
             }
             catch (Exception ex)
@@ -78,26 +79,45 @@ namespace Tesco.Com.Pipeline.Controllers
         }
 
 
-        private void Mix(ProductResult products, PriceResult prices, List<PromotionObject> promos)
+        private List<ResultETL> Mix(ProductResult products, PriceResult prices, List<PromotionObject> promos)
         {
+            var flatProducts = new List<ResultETL>(products.Results.Count());
+            foreach(Result r in products.Results)
+            {
+                var product=new ResultETL();
+                product.ProductId = r.ProductId;
+                product.BaseProductId = r.Summary.BaseProductId;
+                product.Description = r.Summary.Description;
+                product.Title = r.Summary.Title;
+                product.Brand = r.Summary.Brand;
+                //product.DateOfmanufacture = r.Summary.DateOfmanufacture;
+                product.MediaUrl = r.Media.FirstOrDefault().Url;
+                product.Uom  = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId)).Uom;
+                product.Quantity = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId)).Quantity;
+                product.TotalSellingPrice = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId)).TotalSellingPrice.Amount;
+                product.UnitSellingPrice = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId)).UnitSellingPrice.Amount;
+                flatProducts.Add(product);
+            }
+            return flatProducts;
+            
             //commented code is me going overdrive with threading. Did not see a perf benefit even with 1000 products.
             //Parallel.ForEach(promos, p =>
             //{
             //    var pId = p.Buckets.FirstOrDefault().Attachments.FirstOrDefault(a => (a.Type == "productid")).Value;
             //    p.ProductId = pId;
             //});
-            foreach (PromotionObject p in promos)
-            {
-                var pId = p.Buckets.FirstOrDefault().Attachments.FirstOrDefault(a => (a.Type == "productid")).Value;
-                p.ProductId = pId;
-            }
+            //foreach (PromotionObject p in promos)
+            //{
+            //    var pId = p.Buckets.FirstOrDefault().Attachments.FirstOrDefault(a => (a.Type == "productid")).Value;
+            //    p.ProductId = pId;
+            //}
 
-            //Parallel.ForEach(products.Results, r =>
-            foreach (Result r in products.Results)
-            {
-                r.Price = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId));
-                r.Promotion = promos.FirstOrDefault(pr => pr.ProductId == r.ProductId);
-            }//);
+            ////Parallel.ForEach(products.Results, r =>
+            //foreach (Result r in products.Results)
+            //{
+            //    r.Price = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId));
+            //    r.Promotion = promos.FirstOrDefault(pr => pr.ProductId == r.ProductId);
+            //}//);
         }
     }
 }

@@ -91,7 +91,9 @@ namespace Tesco.Com.Pipeline.Provider
             {                
                 string exceptionDetails = ". Exception Details : ";
                 string statusCode = apx.StatusCode.ToString();
-                var values = apx.Headers.GetValues("X-TescoMessage");
+                IEnumerable<string> values;
+                apx.Headers.TryGetValues("X-TescoMessage",out values);
+
                 if (values != null)
                 {
                     foreach (var item in values)
@@ -107,7 +109,7 @@ namespace Tesco.Com.Pipeline.Provider
 
 
 
-        protected object FromApi(string name, string body, params string[] queryParams)
+        public object FromApi(string name, string body, params string[] queryParams)
         {
             ApiConfigurationElement element = ApiHelper.GetApiForKey(name, "gapi");
             if (element != null)

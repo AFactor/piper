@@ -136,6 +136,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductETLController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\ProductEntities.cs" />
     <Compile Include="Entities\NavigationEntities.cs" />
     <Compile Include="Global.asax.cs">

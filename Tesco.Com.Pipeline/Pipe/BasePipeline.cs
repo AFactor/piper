@@ -2,28 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Tesco.Com.Pipeline.Utilities;
 
 namespace Tesco.Com.Pipeline.Pipe
 {
     public class BasePipeline<T>
     {
-        private readonly List<IOperation<T>> operations = new List<IOperation<T>>();
+        private readonly List<BaseOperation<T>> operations = new List<BaseOperation<T>>();
 
-        public BasePipeline<T> Register(IOperation<T> operation)
+
+        public BasePipeline<T> Register(BaseOperation<T> operation, string[] paramArray)
         {
+
+            operation.ParamArray = paramArray;
+            return Register(operation);
+
+        }
+        public BasePipeline<T> Register(BaseOperation<T> operation)
+        {
+
             operations.Add(operation);
+            Logger.Info(operation.ToString() + " added");
             return this;
         }
 
-        public void Execute()
+        public IEnumerable<T> Execute()
         {
-            IEnumerable<T> current = new List<T>();
-            foreach (IOperation<T> operation in operations)
+            Logger.Info("pipeline has started execution");
+
+            IEnumerable<T> result = new List<T>();
+
+
+            foreach (BaseOperation<T> operation in operations)
             {
-                current = operation.Execute(current);
+                Logger.Info(operation.ToString() + " will start execution");
+                result = operation.Execute(result);
+                Logger.Info(operation.ToString() + " executed");
             }
-            IEnumerator<T> enumerator = current.GetEnumerator();
-            while (enumerator.MoveNext()) ;
+            //IEnumerator<T> enumerator = Current.GetEnumerator();
+            //while (enumerator.MoveNext()) ;
+            return result;
+
         }
     }
 }
