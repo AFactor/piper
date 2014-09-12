@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -220,18 +221,17 @@ namespace Tesco.Com.Pipeline.Entities
             }
         }
 
-        /// <remarks/>
-        public System.DateTime DateOfmanufacture
-        {
-            get
-            {
-                return this.dateOfmanufactureField;
-            }
-            set
-            {
-                this.dateOfmanufactureField = value;
-            }
-        }
+        //public System.DateTime DateOfmanufacture
+        //{
+        //    get
+        //    {
+        //        return this.dateOfmanufactureField;
+        //    }
+        //    set
+        //    {
+        //        this.dateOfmanufactureField = value;
+        //    }
+        //}
 
         /// <remarks/>
         public ProductSearchResultProductSummaryStatus Status

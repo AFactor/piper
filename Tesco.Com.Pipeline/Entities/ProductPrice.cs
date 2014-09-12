@@ -6,15 +6,10 @@ using System.Web;
 
 namespace Tesco.Com.Pipeline.Entities
 {
-    public class ProductPrice
+    public class PriceResult
     {
-        public Price[] Prices { get; set; }
-    }
-
-    public class Price
-    {
-        public DateTime ValidFrom { get; set; }
-        public DateTime ValidTill { get; set; }
+        //public DateTime ValidFrom { get; set; }
+        //public DateTime ValidTill { get; set; }
         public string Pricetype { get; set; }
         public Lineprice[] LinePrices { get; set; }
     }

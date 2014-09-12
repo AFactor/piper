@@ -138,10 +138,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DeviceIdentificationController.cs" />
+    <Compile Include="Entities\MediaImage.cs" />
     <Compile Include="Entities\ProductPrice.cs" />
     <Compile Include="Entities\ProductSearchResult.cs" />
     <Compile Include="Entities\ProductList.cs" />
     <Compile Include="Entities\RequestEntities\Products.cs" />
+    <Compile Include="Entities\ResponseEntites\ProductBrowse.cs" />
     <Compile Include="Provider\Appstore\AppstoreDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IProductBrowseProvider.cs" />

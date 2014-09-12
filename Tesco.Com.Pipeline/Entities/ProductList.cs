@@ -79,8 +79,4 @@ namespace Tesco.Com.Pipeline.Entities
             }
         }
     }
-
-    
-    
-
 }
