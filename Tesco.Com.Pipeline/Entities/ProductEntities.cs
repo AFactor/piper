@@ -81,15 +81,15 @@ namespace Tesco.Com.Pipeline.Entities.ProductEntities
         public double Quantity { get; set; }
         public double UnitSellingPrice { get; set; }
         public double TotalSellingPrice { get; set; }
-        //public string PromoId { get; set; }
-        //public string PromoDescription { get; set; }
-        //public string PromoStartDate { get; set; }
-        //public string PromoEndDate { get; set; }
-        //public string RewardType { get; set; }
+        public string PromoId { get; set; }
+        public string PromoDescription { get; set; }
+        public string PromoStartDate { get; set; }
+        public string PromoEndDate { get; set; }
+        public string RewardType { get; set; }
         //public bool ActivationBarcodeRequired { get; set; }
-        //public double PromoThreshold { get; set; }
+        public double PromoThreshold { get; set; }
         //public int StepCount { get; set; }
-        //public string PromoType { get; set; }
+        public string PromoType { get; set; }
         //public string IconType { get; set; }
     }
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Tesco.Com.Pipeline.Utilities;
-
+using Tesco.Com.Pipeline.Operations;
 namespace Tesco.Com.Pipeline.Pipe
 {
     public class BasePipeline<T>
     {
-        private readonly List<BaseOperation<T>> operations = new List<BaseOperation<T>>();
+        private readonly List<BaseOperation<T>> _operations = new List<BaseOperation<T>>();
 
 
         public BasePipeline<T> Register(BaseOperation<T> operation, string[] paramArray)
@@ -18,11 +18,21 @@ namespace Tesco.Com.Pipeline.Pipe
             return Register(operation);
 
         }
+
         public BasePipeline<T> Register(BaseOperation<T> operation)
         {
 
-            operations.Add(operation);
+            _operations.Add(operation);
             Logger.Info(operation.ToString() + " added");
+            return this;
+        }
+
+        public BasePipeline<T> RegisterParrallel(List<BaseOperation<T>> operations)
+        {
+            _operations.Add(new ParrallelOperation<T>(operations));
+            Logger.Info(
+                string.Join(",",operations.Select(o=>o.ToString())) + " added as parrallel steps"
+            );
             return this;
         }
 
@@ -33,7 +43,7 @@ namespace Tesco.Com.Pipeline.Pipe
             IEnumerable<T> result = new List<T>();
 
 
-            foreach (BaseOperation<T> operation in operations)
+            foreach (BaseOperation<T> operation in _operations)
             {
                 Logger.Info(operation.ToString() + " will start execution");
                 result = operation.Execute(result);

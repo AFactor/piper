@@ -19,60 +19,20 @@ namespace Tesco.Com.Pipeline.Controllers
     public class ProductETLController : ApiController
     {
         
-        private readonly IProductProvider _productProvider;
-        private readonly IPriceProvider _priceProvider;
-        private readonly IPromotionProvider _promotionProvider;
-
+        
 
         public ProductETLController() { }
-        public ProductETLController(IProductProvider product, IPriceProvider price, IPromotionProvider promos)
-        {
-            _productProvider = product;
-            _priceProvider = price;
-            _promotionProvider = promos;
-
-        }
+       
 
         [System.Web.Http.HttpGet]
         public IEnumerable<ResultETL> Search(string queryText, int pageNumber, string sort, int perPage)
         {
             try
             {
-                Logger.Info("Request received");
-                //TODO: get steps from config
-                SearchPipeline s=new SearchPipeline(queryText,  pageNumber.ToString(),sort,  perPage.ToString());
-                var v = s.Execute();
-                //var v = s.Current;
-                return  v;
-                //return new List<ResultETL>();
-                //var products = _productProvider.Search(queryText, null, sort, pageNumber, perPage);
-                //var promos = new List<PromotionObject>();
-                //var prices = new PriceResult();
-                //#region parallel
-                //Parallel.Invoke(() =>
-                //{
-                //    prices = _priceProvider.CalculateTotal(products.Results.Select(m => m.ProductId).ToList(),
-                //        null, DateTime.Now, DateTime.Now.AddDays(7), "none");
-                //},
-                //    () =>
-                //    {
-                //        var ids = "productIds:" + string.Join(",", products.Results.Select(m => m.ProductId));
-                //        //limit and offset doesn't matter, will be determined by product
-                //        promos = _promotionProvider.Search(ids, null, 1000, 0);
-                //    });
-                //#endregion
-                //#region sync
-                ////prices = priceProvider.CalculateTotal(products.Results.Select(m => m.ProductId).ToList(),
-                ////                null, DateTime.Now, DateTime.Now.AddDays(7), "None");
-                ////var ids = "productIds:" + string.Join(",", products.Results.Select(m => m.ProductId));
-                //////limit and offset doesn't matter, will be determined by product
-                ////promos = promotionProvider.Search(ids, null, 1000, 0);
-                //#endregion
-
-                //Mix(products, prices, promos);
-                //Logger.Info("Mixing done");
-                //return products;
-
+                Logger.InfoFormat("Product search request received. Searching for {0}. Sorting by {1}. page ={2}, per page={3}",queryText,sort,pageNumber, perPage);
+                //TODO: get steps from config? Do u need it? Does it make sense?
+                var searchResult=new SearchPipeline(queryText,  pageNumber.ToString(),sort,  perPage.ToString()).Execute();                
+                return  searchResult;
             }
             catch (Exception ex)
             {
@@ -84,28 +44,7 @@ namespace Tesco.Com.Pipeline.Controllers
         }
 
 
-        private void Mix(ProductResult products, PriceResult prices, List<PromotionObject> promos)
-        {
-            //commented code is me going overdrive with threading. Did not see a perf benefit even with 1000 products.
-            //Parallel.ForEach(promos, p =>
-            //{
-            //    var pId = p.Buckets.FirstOrDefault().Attachments.FirstOrDefault(a => (a.Type == "productid")).Value;
-            //    p.ProductId = pId;
-            //});
-
-            foreach (PromotionObject p in promos)
-            {
-                var pId = p.Buckets.FirstOrDefault().Attachments.FirstOrDefault(a => (a.Type == "productid")).Value;
-                p.ProductId = pId;
-            }
-
-            //Parallel.ForEach(products.Results, r =>
-            foreach (Result r in products.Results)
-            {
-                r.Price = prices.LinePrices.FirstOrDefault(l => l.ProductId.Contains(r.ProductId));
-                r.Promotion = promos.FirstOrDefault(pr => pr.ProductId == r.ProductId);
-            }//);
-        }
+        
     }
 }
 
