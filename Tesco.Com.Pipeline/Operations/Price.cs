@@ -5,7 +5,7 @@ using System.Web;
 using Tesco.Com.Pipeline.Entities.ProductEntities;
 using Tesco.Com.Pipeline.Provider;
 using Tesco.Com.Pipeline.Operations;
-namespace Tesco.Com.Pipeline.Operations.Product
+namespace Tesco.Com.Pipeline.Operations.Price
 {
     
     public class PriceByIdOperation : ApiOperation<ResultETL>
