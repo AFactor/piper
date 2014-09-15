@@ -69,6 +69,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -124,7 +125,9 @@
       <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ApiHelper.cs" />
     <Compile Include="API\Configuration.cs" />
@@ -134,7 +137,18 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DeviceIdentificationController.cs" />
+    <Compile Include="Entities\MediaImage.cs" />
+    <Compile Include="Entities\ProductPrice.cs" />
+    <Compile Include="Entities\ProductSearchResult.cs" />
+    <Compile Include="Entities\ProductList.cs" />
+    <Compile Include="Entities\RequestEntities\Products.cs" />
+    <Compile Include="Entities\ResponseEntites\ProductBrowse.cs" />
+    <Compile Include="Provider\Appstore\AppstoreDeviceIdentificationProvider.cs" />
+    <Compile Include="Provider\Contract\IDeviceIdentificationProvider.cs" />
+    <Compile Include="Provider\Contract\IProductBrowseProvider.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\ProductBrowseController.cs" />
     <Compile Include="Entities\NavigationEntities.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +157,12 @@
     <Compile Include="Provider\BaseProvider.cs" />
     <Compile Include="Provider\Contract\INavigationProvider.cs" />
     <Compile Include="Provider\GAPI\GAPINavigationProvider.cs" />
+    <Compile Include="Provider\GAPI\GAPIProductBrowseProvider.cs" />
+    <Compile Include="Service References\DeviceIdentificationSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\ApiException.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\Logger.cs" />
@@ -150,6 +170,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Build.pubxml" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification.disco" />
+    <None Include="Service References\DeviceIdentificationSvc\configuration91.svcinfo" />
+    <None Include="Service References\DeviceIdentificationSvc\configuration.svcinfo" />
+    <None Include="Service References\DeviceIdentificationSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -157,8 +184,26 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification.wsdl" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification1.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification2.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification3.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification4.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification5.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification6.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentification7.xsd" />
+    <None Include="Service References\DeviceIdentificationSvc\DeviceIdentificationService.wsdl" />
+    <Content Include="Service References\DeviceIdentificationSvc\Tesco.Com.Pipeline.DeviceIdentificationSvc.DeviceFamily.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DeviceIdentificationSvc\Tesco.Com.Pipeline.DeviceIdentificationSvc.ResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DeviceIdentificationSvc\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Config\app.config" />
@@ -166,6 +211,7 @@
     <Content Include="Config\api.config" />
     <Content Include="Config\unity.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

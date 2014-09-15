@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tesco.com/appstore/proxy/1" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DeviceIdentificationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tesco.com/appstore/proxy/1" location="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd7" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd0" namespace="http://tesco.com/appstore/proxy/1" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd2" namespace="http://tesco.com/appstore/messages/1" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd3" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.DeviceIdentification.Messages" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.Core.MessageTypes" />
+      <xsd:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.DeviceIdentification" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDeviceIdentificationService_GetDeviceFamily_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceFamily" />
+  </wsdl:message>
+  <wsdl:message name="IDeviceIdentificationService_GetDeviceFamily_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceFamilyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDeviceIdentificationService">
+    <wsdl:operation name="GetDeviceFamily">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDeviceIdentificationService/GetDeviceFamily" message="tns:IDeviceIdentificationService_GetDeviceFamily_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDeviceIdentificationService/GetDeviceFamilyResponse" message="tns:IDeviceIdentificationService_GetDeviceFamily_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRemoteServiceProxyContract" type="i0:IRemoteServiceProxyContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Send">
+      <soap:operation soapAction="http://tesco.com/appstore/proxy/1/IRemoteServiceProxyContract/Send" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequestXml">
+      <soap:operation soapAction="http://tesco.com/appstore/proxy/1/IRemoteServiceProxyContract/SendRequestXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Post">
+      <soap:operation soapAction="http://tesco.com/appstore/proxy/1/IRemoteServiceProxyContract/Post" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDeviceIdentificationService" type="tns:IDeviceIdentificationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDeviceFamily">
+      <soap:operation soapAction="http://tempuri.org/IDeviceIdentificationService/GetDeviceFamily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DeviceIdentificationService">
+    <wsdl:port name="BasicHttpBinding_IRemoteServiceProxyContract" binding="tns:BasicHttpBinding_IRemoteServiceProxyContract">
+      <soap:address location="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IDeviceIdentificationService" binding="tns:BasicHttpBinding_IDeviceIdentificationService">
+      <soap:address location="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

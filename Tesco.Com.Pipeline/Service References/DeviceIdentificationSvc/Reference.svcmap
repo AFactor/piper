@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="458cb51e-bec2-4b61-9c29-ff0fd69099a0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ukdev66aping01v:81/DeviceIdentificationService/DeviceIdentification.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DeviceIdentification.xsd" MetadataType="Schema" ID="235c32ab-41db-41f7-9427-ed23c2b109bf" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd7" />
+    <MetadataFile FileName="DeviceIdentification1.xsd" MetadataType="Schema" ID="b728a7f7-a9d8-460e-8ec1-e9ecacf86efb" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd3" />
+    <MetadataFile FileName="DeviceIdentification2.xsd" MetadataType="Schema" ID="e098b67a-0c2c-42e7-a076-1b1b6cb46463" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd1" />
+    <MetadataFile FileName="DeviceIdentification3.xsd" MetadataType="Schema" ID="e816f846-9598-4b1a-b3ef-310a5fa381a7" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd4" />
+    <MetadataFile FileName="DeviceIdentification.disco" MetadataType="Disco" ID="a006d360-c5e3-4c36-8e14-65f944ce1764" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?disco" />
+    <MetadataFile FileName="DeviceIdentification4.xsd" MetadataType="Schema" ID="2ace54d8-de3e-437e-9a8a-af6ec7ba6847" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd6" />
+    <MetadataFile FileName="DeviceIdentification5.xsd" MetadataType="Schema" ID="1efc417d-f52b-4226-9d86-6b65ece6cc9d" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd2" />
+    <MetadataFile FileName="DeviceIdentification6.xsd" MetadataType="Schema" ID="3dbaa011-35b5-4a16-9aa9-e7cbb71f1fb0" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd0" />
+    <MetadataFile FileName="DeviceIdentificationService.wsdl" MetadataType="Wsdl" ID="9fdfb488-fe32-4392-9459-436fc7651f9a" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?wsdl" />
+    <MetadataFile FileName="DeviceIdentification.wsdl" MetadataType="Wsdl" ID="3817c7e2-9011-4fb2-8cab-c4127a454048" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="DeviceIdentification7.xsd" MetadataType="Schema" ID="e6b02de3-0117-4e29-9efe-0e8cb44f58a8" SourceId="1" SourceUrl="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -38,8 +39,24 @@ namespace Tesco.Com.Pipeline
                     action = "Get"
                 });
 
+            config.Routes.MapHttpRoute(null, "ProductBrowse/",
+                new
+                {
+                    controller = "ProductBrowse",
+                    action = "GetProductList"
+                });
+
+            config.Routes.MapHttpRoute(null, "DeviceIdentification/",
+                new
+                {
+                    controller = "DeviceIdentification",
+                    action = "GetDeviceFamily"
+                });
+            
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            var settings = json.SerializerSettings;
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }

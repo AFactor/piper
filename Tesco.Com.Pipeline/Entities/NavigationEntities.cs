@@ -10,14 +10,16 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
 {
     public class Hierarchy
     {
+        [JsonProperty("value")]
         public string Name { get; set; }
 
-        public int Level { get; set; }
+        public string slug
+        {
+            get { return HelperMethods.GenerateSlug(Name); }
+        }
 
         [JsonIgnore]
         public string LevelName { get; set; }
-
-        public Child[] Children { get; set; }
 
         public string Type
         {
@@ -43,18 +45,22 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         {
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
+
+        public Child[] Children { get; set; }
     }
 
     public class Child
     {
+        [JsonProperty("value")]
         public string Name { get; set; }
 
-        public int Level { get; set; }
+        public string slug
+        {
+            get { return HelperMethods.GenerateSlug(Name); }
+        }
 
         [JsonIgnore]
         public string LevelName { get; set; }
-
-        public Child[] Children { get; set; }
 
         public string Type
         {
@@ -80,5 +86,7 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         {
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
+
+        public Child[] Children { get; set; }
     }
 }
