@@ -1,4 +1,3 @@
-
 RSpec.describe "Navigation API" do
 
   it "type=all should return everything" do
@@ -9,13 +8,18 @@ RSpec.describe "Navigation API" do
     json_hash['ne'].should be_empty
     json_hash['children'].each do |child|
       child.should have_key('value')
-      child['value'].should_not be_empty
+      value = child['value']
+      value.should_not be_empty
+      child['slug'] = value.downcase.gsub(' ', '-').gsub(',', '-').gsub('&', '-')
       child['type'].should eql 'SuperDepartment'
       child['taxonomyId'].should_not be_empty
       child['n'].should_not be_empty
       child['ne'].should_not be_empty
       child['children'].each do |super_department_children|
         super_department_children.should have_key('value')
+        value = super_department_children['value']
+        value.should_not be_empty
+        super_department_children['slug'] =value.downcase.gsub(' ', '-').gsub(',', '-').gsub('&', '-')
         super_department_children['value'].should_not be_empty
         super_department_children['type'].should eql 'Department'
         super_department_children['taxonomyId'].should_not be_empty
@@ -23,14 +27,18 @@ RSpec.describe "Navigation API" do
         super_department_children['ne'].should_not be_empty
         super_department_children['children'].each do |department_children|
           department_children.should have_key('value')
-          department_children['value'].should_not be_empty
+          value = department_children['value']
+          value.should_not be_empty
+          department_children['slug'] = value.downcase.gsub(' ', '-').gsub(',', '-').gsub('&', '-')
           department_children['type'].should eql 'Aisle'
           department_children['taxonomyId'].should_not be_empty
           department_children['n'].should_not be_empty
           department_children['ne'].should_not be_empty
           department_children['children'].each do |aisle_children|
             aisle_children.should have_key('value')
-            aisle_children['value'].should_not be_empty
+            value = aisle_children['value']
+            value.should_not be_empty
+            aisle_children['slug'] = value.downcase.gsub(' ', '-').gsub(',', '-').gsub('&', '-')
             aisle_children['type'].should eql 'Shelf'
             aisle_children['taxonomyId'].should_not be_empty
             aisle_children['n'].should_not be_empty
@@ -49,7 +57,9 @@ RSpec.describe "Navigation API" do
     json_hash['ne'].should be_empty
     json_hash['children'].each do |child|
       child.should have_key('value')
-      child['value'].should_not be_empty
+      value = child['value']
+      value.should_not be_empty
+      child['slug'] = value.downcase.gsub(' ', '-').gsub(',', '-').gsub('&', '-')
       child['type'].should eql 'SuperDepartment'
       child['taxonomyId'].should_not be_empty
       child['n'].should_not be_empty
@@ -64,7 +74,9 @@ RSpec.describe "Navigation API" do
     json_hash['taxonomyId'].should eql taxonomy_id
     json_hash['children'].each do |child|
       child.should have_key('value')
-      child['value'].should_not be_empty
+      value = child['value']
+      value.should_not be_empty
+      child['slug'] = value.downcase.gsub(' ', '-').gsub(',', '-').gsub('&', '-')
       child['type'].should include 'Department'
       child['taxonomyId'].should_not be_empty
       child['n'].should_not be_empty
