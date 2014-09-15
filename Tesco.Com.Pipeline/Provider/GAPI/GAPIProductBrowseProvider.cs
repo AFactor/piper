@@ -12,6 +12,9 @@ namespace Tesco.Com.Pipeline.Provider.GAPI
 {
     public class GAPIProductBrowseProvider : BaseProvider, IProductBrowseProvider
     {
+        private const string IMAGEHEIGHTWIDTH225 = "225";
+        private const string IMAGEHEIGHTWIDTH540 = "540";
+
         public List<Entities.ResponseEntites.ProductBrowse> GetProductList(string query, string offset, string limit, string orderByFields, string business)
         {
             List<ProductBrowse> lstProductBrowse = new List<ProductBrowse>();
@@ -63,24 +66,36 @@ namespace Tesco.Com.Pipeline.Provider.GAPI
 
                         if (prod.Media != null)
                         {
+                            Media media = new Media();
                             foreach(var attribute in prod.Media)
                             {
                                 if (attribute.Type == "AlternativeImage")
                                 {
                                     Entities.MediaImage mediaImage = JsonConvert.DeserializeObject<Entities.MediaImage>(attribute.Url.Replace("@", ""));
 
-                                    Media media;
                                     if (mediaImage != null && mediaImage.AlternativeImageSizes != null && 
                                         mediaImage.AlternativeImageSizes.Images != null && 
                                         mediaImage.AlternativeImageSizes.Images.ImageMetaData != null)
                                     {
-                                        foreach (var x in mediaImage.AlternativeImageSizes.Images.ImageMetaData)
+                                        List<Image> images = new List<Image>();
+                                        Image image;
+                                        foreach (var item in mediaImage.AlternativeImageSizes.Images.ImageMetaData)
                                         {
-                                            // TODO map images
+                                            if ((item.height == IMAGEHEIGHTWIDTH225 && item.width == IMAGEHEIGHTWIDTH225) ||
+                                                (item.height == IMAGEHEIGHTWIDTH540 && item.width == IMAGEHEIGHTWIDTH540))
+                                            {
+                                                image = new Image();
+                                                image.Height = item.height;
+                                                image.Width = item.width;
+                                                image.Url = item.url;
+                                                images.Add(image);
+                                            }
                                         }
+                                        media.Images = images;
                                     }
                                 }
                             }
+                            productBrowse.Media = media;
                         }
 
                         foreach(var attribute in prod.CustomAttributes)

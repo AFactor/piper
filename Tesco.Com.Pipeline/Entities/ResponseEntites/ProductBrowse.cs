@@ -32,10 +32,10 @@ namespace Tesco.Com.Pipeline.Entities.ResponseEntites
 
     public class Media
     {
-        public Imgaes[] Images { get; set; }
+        public List<Image> Images { get; set; }
     }
 
-    public class Imgaes
+    public class Image
     {
         public string Url { get; set; }
         public string Width { get; set; }
