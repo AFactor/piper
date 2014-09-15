@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tesco.com/appstore/messages/1" elementFormDefault="qualified" targetNamespace="http://tesco.com/appstore/messages/1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd3" />
+  <xs:complexType name="RequestMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="callContext" nillable="true" type="CallContext" />
+      <xs:element minOccurs="0" name="messageId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="requestName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestMessage" nillable="true" type="tns:RequestMessage" />
+  <xs:complexType name="ResponseMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="requestMessageId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseMessage" nillable="true" type="tns:ResponseMessage" />
+</xs:schema>

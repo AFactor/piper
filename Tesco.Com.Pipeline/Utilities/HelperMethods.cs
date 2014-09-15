@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Tesco.Com.Pipeline.Utilities
@@ -23,5 +25,30 @@ namespace Tesco.Com.Pipeline.Utilities
             }
             return value;
         }
+
+        /// <summary>
+        /// Convert Foreign Accent Characters
+        /// </summary>
+        /// 
+        /// <returns>Common ASCII representation</returns>
+        public static string RemoveAccent(this string s)
+        {
+            return Encoding.ASCII.GetString(Encoding.GetEncoding("Cyrillic").GetBytes(s));
+        }
+
+        public static string GenerateSlug(this string phrase)
+        {
+            string str = phrase.RemoveAccent().ToLower();
+            // invalid chars           
+            str = Regex.Replace(str, @"[^a-z0-9/_\s-]", "");
+
+            str = Regex.Replace(str, @"[/_]", " ").Trim();
+
+            // convert multiple spaces into one space   
+            str = Regex.Replace(str, @"\s+", " ").Trim();
+
+            str = Regex.Replace(str, @"\s", "-"); // hyphens   
+            return str;
+        } 
     }
 }

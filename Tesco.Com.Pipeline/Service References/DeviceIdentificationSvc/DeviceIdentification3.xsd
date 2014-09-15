@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.DeviceIdentification.Messages" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.DeviceIdentification.Messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.Core.MessageTypes" />
+  <xs:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.DeviceIdentification" />
+  <xs:import schemaLocation="http://ukdev66aping01v.dotcom.tesco.org:81/DeviceIdentificationService/DeviceIdentification.svc?xsd=xsd2" namespace="http://tesco.com/appstore/messages/1" />
+  <xs:complexType name="GetDeviceFamilyRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.Core.MessageTypes" base="q1:ServiceRequestOfGetDeviceFamilyResponsePCX_PtJya">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userAgent" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDeviceFamilyRequest" nillable="true" type="tns:GetDeviceFamilyRequest" />
+  <xs:complexType name="GetDeviceFamilyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://tesco.com/appstore/messages/1" base="q2:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Tesco.Com.AppStore.DeviceIdentification" minOccurs="0" name="Result" nillable="true" type="q3:DeviceFamily" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDeviceFamilyResponse" nillable="true" type="tns:GetDeviceFamilyResponse" />
+</xs:schema>
