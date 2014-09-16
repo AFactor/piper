@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.Remoting;
 using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using Tesco.Com.Pipeline.API;
 using Tesco.Com.Pipeline.Utilities;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Configuration;
-using Tesco.Com.Pipeline.Utilities;
 
-namespace Tesco.Com.Pipeline.Provider
+namespace Tesco.Com.Pipeline.Operations
 {
-    public class BaseProvider
+
+
+    public abstract class ApiOperation<T>: BaseOperation<T>
     {
+        
+        
+
         protected object FromUri(string uri, HttpVerbs verb, string entityType, string entityAssembly, string body = "", bool isGenericType = false)
         {
             try
@@ -42,12 +44,11 @@ namespace Tesco.Com.Pipeline.Provider
 
                 };
 
-                //TODO: read up HttpCleint and refactor
-                HttpResponseMessage response = new HttpResponseMessage();
                 
+                HttpResponseMessage response = new HttpResponseMessage();
                 using (HttpClient client = new HttpClient(httpClientHandler, true))
                 {
-                    client.DefaultRequestHeaders.Add("accept", "application/json");
+                    client.DefaultRequestHeaders.Add("accept", "application/json");                    
                     ////todo: remove hard code authetication. Use request headers
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", "appKeyToken=DotnetHostUser001&appKey=F28AE227-529A-488D-A955-A0CD0048EC89&");
                     Logger.Info(string.Format("Logging Request: uri: {0}. Body: {1}.", uri, body));
@@ -77,7 +78,7 @@ namespace Tesco.Com.Pipeline.Provider
                     throw new ApiException(response.StatusCode, response.Headers);
 
                 }
-                
+
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
                 obj = serializer.ReadObject(apiStream);
                 response.Dispose();
@@ -85,12 +86,12 @@ namespace Tesco.Com.Pipeline.Provider
                 apiStream.Dispose();
                 return obj;
             }
-            catch(ApiException apx)
-            {                
+            catch (ApiException apx)
+            {
                 string exceptionDetails = ". Exception Details : ";
                 string statusCode = apx.StatusCode.ToString();
                 IEnumerable<string> values;
-                apx.Headers.TryGetValues("X-TescoMessage",out values);
+                apx.Headers.TryGetValues("X-TescoMessage", out values);
 
                 if (values != null)
                 {
@@ -99,7 +100,7 @@ namespace Tesco.Com.Pipeline.Provider
                         exceptionDetails += item;
                     }
                 }
-                
+
                 string errorMsg = String.Concat(apx.Message, " Code: ", statusCode, exceptionDetails);
                 throw new ApplicationException(errorMsg);
             }
@@ -129,4 +130,5 @@ namespace Tesco.Com.Pipeline.Provider
             return null;
         }
     }
+
 }
