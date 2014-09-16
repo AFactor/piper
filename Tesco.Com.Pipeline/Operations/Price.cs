@@ -25,11 +25,14 @@ namespace Tesco.Com.Pipeline.Operations.Price
             List<ResultETL> products = new List<ResultETL>();
             foreach (ResultETL resultDetail in input)
             {
-
-                resultDetail.Uom = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).Uom;
-                resultDetail.Quantity = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).Quantity;
-                resultDetail.TotalSellingPrice = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).TotalSellingPrice.Amount;
-                resultDetail.UnitSellingPrice = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).UnitSellingPrice.Amount;
+                var linePrice = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId));
+                if (null != linePrice)
+                {
+                    resultDetail.Uom = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).Uom;
+                    resultDetail.Quantity = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).Quantity;
+                    resultDetail.TotalSellingPrice = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).TotalSellingPrice.Amount;
+                    resultDetail.UnitSellingPrice = price.LinePrices.FirstOrDefault(l => l.ProductId.Contains(resultDetail.ProductId)).UnitSellingPrice.Amount;
+                }
             }
             return input;
         }

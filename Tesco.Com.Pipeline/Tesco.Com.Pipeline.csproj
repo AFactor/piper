@@ -142,17 +142,17 @@
     <Compile Include="Entities\ProductPrice.cs" />
     <Compile Include="Entities\ProductSearchResult.cs" />
     <Compile Include="Entities\ProductList.cs" />
+    <Compile Include="Entities\RangeEntities.cs" />
     <Compile Include="Entities\RequestEntities\Products.cs" />
     <Compile Include="Entities\ResponseEntites\ProductBrowse.cs" />
+    <Compile Include="Operations\Range.cs" />
+    <Compile Include="Pipe\ProductBrowsePipeline.cs" />
     <Compile Include="Provider\Appstore\AppstoreDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IProductBrowseProvider.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ProductBrowseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductETLController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Entities\ProductEntities.cs" />
     <Compile Include="Entities\NavigationEntities.cs" />
     <Compile Include="Global.asax.cs">
