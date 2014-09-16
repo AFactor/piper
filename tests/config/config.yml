@@ -2,9 +2,12 @@ defaults: &defaults
   type_all: ?type=all
   type_super_department: ?type=superdepartment
   type_department: ?type=department&taxonomyid=
+  aisle: ?query=N=something,Ne=_else,lvl=3&offset=1&limit=10
+  navigation: Navigation
+  product_listing: ProductBrowse
 test_env_one:
   <<: *defaults
-  navigation_base_url: http://localhost:8080/Pipeline/Navigation
+  base_url: http://localhost:8080/Pipeline/
 test:
   <<: *defaults
-  navigation_base_url: http://172.28.150.24:8080/Pipeline/Navigation
+  base_url: http://172.28.150.24:8080/Pipeline/
