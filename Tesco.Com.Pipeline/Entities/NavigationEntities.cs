@@ -114,7 +114,23 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
 
-        public List<Child> Children { get; set; }
+        private const string AISLE = "Aisle";
+        private List<Child> _children;
+        public List<Child> Children 
+        {
+            get
+            {
+                return _children != null ? _children : new List<Child>();
+            }
+            set
+            {
+                // Do not ouput Aisle children (i.e. Shelves) as Navigation does not need to deisplay it.
+                if (Type != AISLE)
+                {
+                    _children = value;
+                }
+            }
+        }
     }
 
     public class Hero
