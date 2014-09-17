@@ -50,5 +50,10 @@ namespace Tesco.Com.Pipeline.Utilities
         {
             log.Info(string.Format(_infoFormat, log.Logger.Name, DateTime.Now, System.Threading.Thread.CurrentThread.ManagedThreadId, message));
         }
+
+        public static void InfoFormat(string format, params object[] args)
+        {
+            log.Info(string.Format( _infoFormat, log.Logger.Name, DateTime.Now, System.Threading.Thread.CurrentThread.ManagedThreadId, string.Format(format,args)));
+        }
     }
 }

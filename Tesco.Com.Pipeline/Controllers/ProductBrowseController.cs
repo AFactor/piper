@@ -29,6 +29,7 @@ namespace Tesco.Com.Pipeline.Controllers
             try
             {
                 productBrowse = _productBrowseProvider.GetProductList(query, offset, limit, orderByFields, business);
+
                 return productBrowse;
             }
             catch (Exception ex)

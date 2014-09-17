@@ -18,10 +18,13 @@ namespace Tesco.Com.Pipeline.Utilities
         public static string Extract(string data, string key, char separator)
         {
             string value = string.Empty;
-            Dictionary<string, string> dic = data.Split(separator).Select(s => s.Split('=')).ToDictionary(a => a[0], a => a[1]);
-            if (dic.ContainsKey(key))
+            if (!string.IsNullOrEmpty(data))
             {
-                value = dic[key];
+                Dictionary<string, string> dic = data.Split(separator).Select(s => s.Split('=')).ToDictionary(a => a[0], a => a[1]);
+                if (dic.ContainsKey(key))
+                {
+                    value = dic[key];
+                }
             }
             return value;
         }

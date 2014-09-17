@@ -9,9 +9,9 @@ namespace Tesco.Com.Pipeline.Provider.Contract
     public interface INavigationProvider
     {
         // For anonymous request
-        Hierarchy GetNavigation(string type, string taxonomyId, string business);
+        Navigation GetNavigation(string type, string taxonomyId, string business);
 
         // Loggedin customer request
-        Hierarchy GetNavigation(string type, string taxonomyId, string business, string storeId);
+        Navigation GetNavigation(string type, string taxonomyId, string business, string storeId);
     }
 }
