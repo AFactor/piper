@@ -25,7 +25,7 @@ namespace Tesco.Com.Pipeline.Controllers
 
 
         [System.Web.Http.HttpGet]
-        public Hierarchy Get(string type, string taxonomyId = "", string business = "Grocery", string storeId = "")
+        public Navigation Get(string type, string taxonomyId = "", string business = "Grocery", string storeId = "")
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Tesco.Com.Pipeline.Controllers
         }
 
 
-        private Hierarchy Get(string type, string taxonomyId, string business)
+        private Navigation Get(string type, string taxonomyId, string business)
         {
             try
             {

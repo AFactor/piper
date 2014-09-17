@@ -51,6 +51,8 @@ namespace Tesco.Com.Pipeline
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             var settings = json.SerializerSettings;
+            settings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            settings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }

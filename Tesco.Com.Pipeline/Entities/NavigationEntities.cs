@@ -8,6 +8,31 @@ using Tesco.Com.Pipeline.Utilities;
 
 namespace Tesco.Com.Pipeline.Entities.NavigationEntities
 {
+
+    public class Navigation
+    {
+        [JsonProperty("shop-groceries")]
+        public Hierarchy ShopGroceries { get; set; }
+
+        [JsonProperty("my-shopping")]
+        public Hierarchy MyShopping { get; set; }
+
+        [JsonProperty("special-offers")]
+        public Hierarchy SpecialOffers { get; set; }
+
+        [JsonProperty("meals-recipes")]
+        public Hierarchy MealsRecipes { get; set; }
+
+        [JsonProperty("in-season")]
+        public Hierarchy InSeason { get; set; }
+
+        [JsonProperty("your-benefits")]
+        public Hierarchy YourBenefits { get; set; }
+
+        [JsonProperty("delivery")]
+        public Hierarchy Delivery { get; set; }
+    }
+
     public class Hierarchy
     {
         [JsonProperty("value")]
@@ -46,7 +71,9 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
 
-        public Child[] Children { get; set; }
+        public List<Child> Children { get; set; }
+
+        public List<Hero> Hero { get; set; }
     }
 
     public class Child
@@ -87,6 +114,11 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
             get { return HelperMethods.Extract(LevelName, "lvl", ','); }
         }
 
-        public Child[] Children { get; set; }
+        public List<Child> Children { get; set; }
+    }
+
+    public class Hero
+    {
+        public string Value { get; set; }
     }
 }
