@@ -120,7 +120,7 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         {
             get
             {
-                return _children != null ? _children : new List<Child>();
+                return _children;// != null ? _children : new List<Child>();
             }
             set
             {
