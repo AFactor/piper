@@ -50,7 +50,10 @@ namespace Tesco.Com.Pipeline.Utilities
             // convert multiple spaces into one space   
             str = Regex.Replace(str, @"\s+", " ").Trim();
 
-            str = Regex.Replace(str, @"\s", "-"); // hyphens   
+            str = Regex.Replace(str, @"\s", "-").Trim(); // hyphens   
+
+            // convert multiple - into one -   
+            str = Regex.Replace(str, @"\-+", "-").Trim();
             return str;
         } 
     }
