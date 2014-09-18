@@ -38,50 +38,7 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
         [JsonProperty("value")]
         public string Name { get; set; }
 
-        public string slug
-        {
-            get { return HelperMethods.GenerateSlug(Name); }
-        }
-
-        [JsonIgnore]
-        public string LevelName { get; set; }
-
-        public string Type
-        {
-            get { return HelperMethods.Extract(LevelName, "type", ','); }
-        }
-
-        public string TaxonomyId
-        {
-            get { return HelperMethods.Extract(LevelName, "taxonomyId", ','); }
-        }
-
-        public string N
-        {
-            get { return HelperMethods.Extract(LevelName, "N", ','); }
-        }
-
-        public string Ne
-        {
-            get { return HelperMethods.Extract(LevelName, "Ne", ','); }
-        }
-
-        public string Lvl
-        {
-            get { return HelperMethods.Extract(LevelName, "lvl", ','); }
-        }
-
-        public List<Child> Children { get; set; }
-
-        public List<Hero> Hero { get; set; }
-    }
-
-    public class Child
-    {
-        [JsonProperty("value")]
-        public string Name { get; set; }
-
-        public string slug
+        public string Slug
         {
             get { return HelperMethods.GenerateSlug(Name); }
         }
@@ -116,21 +73,128 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
 
         private const string AISLE = "Aisle";
         private List<Child> _children;
+        Dictionary<string, Child> dictChild;
+
+        [JsonIgnore]
+        public List<Child> Children
+        {
+            get
+            {
+                return _children;
+            }
+            set
+            {
+                // Do not ouput Aisle children (i.e. Shelves) as Navigation does not need to display it.
+                if (Type != AISLE)
+                {
+                    _children = value;
+                    dictChild = new Dictionary<string, Child>();
+                    foreach (Child child in _children)
+                    {
+                        dictChild.Add(child.Slug, child);
+                    }
+
+                    this.Data = dictChild;
+                }
+            }
+        }
+
+        private Dictionary<string, Child> _data;
+        [JsonProperty("children")]
+        public Dictionary<string, Child> Data
+        {
+            get
+            {
+                return _data;
+            }
+            set
+            {
+                _data = value;
+            }
+        }
+
+        public List<Hero> Hero { get; set; }
+    }
+
+    public class Child
+    {
+        [JsonProperty("value")]
+        public string Name { get; set; }
+
+        public string Slug
+        {
+            get { return HelperMethods.GenerateSlug(Name); }
+        }
+
+        [JsonIgnore]
+        public string LevelName { get; set; }
+
+        public string Type
+        {
+            get { return HelperMethods.Extract(LevelName, "type", ','); }
+        }
+
+        public string TaxonomyId
+        {
+            get { return HelperMethods.Extract(LevelName, "taxonomyId", ','); }
+        }
+
+        public string N
+        {
+            get { return HelperMethods.Extract(LevelName, "N", ','); }
+        }
+
+        public string Ne
+        {
+            get { return HelperMethods.Extract(LevelName, "Ne", ','); }
+        }
+
+        public string Lvl
+        {
+            get { return HelperMethods.Extract(LevelName, "lvl", ','); }
+        }
+
+        private const string AISLE = "Aisle";
+        private List<Child> _children;
+        [JsonIgnore]
         public List<Child> Children 
         {
             get
             {
-                return _children;// != null ? _children : new List<Child>();
+                return _children;
             }
             set
             {
-                // Do not ouput Aisle children (i.e. Shelves) as Navigation does not need to deisplay it.
+                // Do not ouput Aisle children (i.e. Shelves) as Navigation does not need to display it.
                 if (Type != AISLE)
                 {
                     _children = value;
+                    Dictionary<string, Child> x = new Dictionary<string, Child>();
+                    foreach (Child child in _children)
+                    {
+                        x.Add(child.Slug, child);
+                    }
+                    
+                    this.Data = x;
                 }
             }
         }
+
+        private Dictionary<string, Child> _data;
+        [JsonProperty("children")]
+        public Dictionary<string, Child> Data
+        {
+            get
+            {
+                return _data;
+            }
+            set
+            {
+                _data = value;   
+            }
+        }
+
+
     }
 
     public class Hero
