@@ -98,20 +98,9 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
                 }
             }
         }
-
-        private Dictionary<string, Child> _data;
+       
         [JsonProperty("children")]
-        public Dictionary<string, Child> Data
-        {
-            get
-            {
-                return _data;
-            }
-            set
-            {
-                _data = value;
-            }
-        }
+        public Dictionary<string, Child> Data { get; set; }
 
         public List<Hero> Hero { get; set; }
     }
@@ -156,6 +145,8 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
 
         private const string AISLE = "Aisle";
         private List<Child> _children;
+        Dictionary<string, Child> dictChild;
+
         [JsonIgnore]
         public List<Child> Children 
         {
@@ -169,32 +160,19 @@ namespace Tesco.Com.Pipeline.Entities.NavigationEntities
                 if (Type != AISLE)
                 {
                     _children = value;
-                    Dictionary<string, Child> x = new Dictionary<string, Child>();
+                    dictChild = new Dictionary<string, Child>();
                     foreach (Child child in _children)
                     {
-                        x.Add(child.Slug, child);
+                        dictChild.Add(child.Slug, child);
                     }
-                    
-                    this.Data = x;
+
+                    this.Data = dictChild;
                 }
             }
         }
 
-        private Dictionary<string, Child> _data;
         [JsonProperty("children")]
-        public Dictionary<string, Child> Data
-        {
-            get
-            {
-                return _data;
-            }
-            set
-            {
-                _data = value;   
-            }
-        }
-
-
+        public Dictionary<string, Child> Data { get; set; }
     }
 
     public class Hero
