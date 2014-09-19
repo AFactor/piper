@@ -23,7 +23,7 @@ namespace Tesco.Com.Pipeline
                 //pageNumber = UrlParameter.Optional,
                 //sort = UrlParameter.Optional,
                 //perpage = UrlParameter.Optional,
-                controller = "ProductETL",
+                controller = "Product",
                 action = "Search"
             });
 
@@ -34,7 +34,7 @@ namespace Tesco.Com.Pipeline
                     action = "Get"
                 });
 
-            config.Routes.MapHttpRoute(null, "ProductBrowse/",
+            config.Routes.MapHttpRoute(null, "Product/Browse",
                 new
                 {
                     controller = "Product",

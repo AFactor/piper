@@ -146,6 +146,7 @@
     <Compile Include="Entities\RequestEntities\Products.cs" />
     <Compile Include="Entities\ResponseEntites\ProductBrowse.cs" />
     <Compile Include="Operations\Range.cs" />
+    <Compile Include="Pipe\IPipeline.cs" />
     <Compile Include="Pipe\ProductBrowsePipeline.cs" />
     <Compile Include="Provider\Appstore\AppstoreDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IDeviceIdentificationProvider.cs" />
