@@ -16,7 +16,7 @@ namespace Tesco.Com.Pipeline.Operations
 {
 
 
-    public abstract class BaseOperation<T>
+    public abstract class BaseOperation<T>:IOpeariton<T>
     {
         
         
@@ -25,6 +25,17 @@ namespace Tesco.Com.Pipeline.Operations
         
 
       
+    }
+
+    public interface IOpeariton<T>
+    {
+
+
+        string[] ParamArray { get; set; }
+        IEnumerable<T> Execute(IEnumerable<T> input);
+
+
+
     }
 
 }

@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Tesco.Com.Pipeline.Operations
 {
-    public class ParrallelOperation<T> : BaseOperation<T>
+    public class ParrallelOperation<T> : BaseOperation<T>,IOpeariton<T>
     {
 
-        public  ParrallelOperation(List<BaseOperation<T>> ops)
+        public  ParrallelOperation(List<IOpeariton<T>> ops)
         {
             Operations = ops;
 
         }
 
 
-        public List<BaseOperation<T>> Operations { get; private set; }
+        public List<IOpeariton<T>> Operations { get; private set; }
         
         public override IEnumerable<T> Execute(IEnumerable<T> input)
         {

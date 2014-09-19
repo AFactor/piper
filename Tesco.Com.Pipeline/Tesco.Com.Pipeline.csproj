@@ -148,7 +148,10 @@
     <Compile Include="Operations\NavigationOperation.cs" />
     <Compile Include="Operations\Range.cs" />
     <Compile Include="Pipe\IPipeline.cs" />
+<<<<<<< HEAD
     <Compile Include="Pipe\NavigationPipeline.cs" />
+=======
+>>>>>>> 1208d39e9c8d17dea211f0de6c72870bc287c985
     <Compile Include="Pipe\ProductBrowsePipeline.cs" />
     <Compile Include="Provider\Appstore\AppstoreDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IDeviceIdentificationProvider.cs" />

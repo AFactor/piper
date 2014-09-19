@@ -6,9 +6,13 @@ using Tesco.Com.Pipeline.Utilities;
 using Tesco.Com.Pipeline.Operations;
 namespace Tesco.Com.Pipeline.Pipe
 {
+<<<<<<< HEAD
     public class BasePipeline<T> //: IPipeline<T>
+=======
+    public class BasePipeline<T>:IPipeline<T>
+>>>>>>> 1208d39e9c8d17dea211f0de6c72870bc287c985
     {
-        private readonly List<BaseOperation<T>> _operations = new List<BaseOperation<T>>();
+        private readonly List<IOpeariton<T>> _operations = new List<IOpeariton<T>>();
 
         public BasePipeline(){}
         
@@ -17,20 +21,20 @@ namespace Tesco.Com.Pipeline.Pipe
             _operations = operations;
         }
 
-        public BasePipeline<T> Register(BaseOperation<T> operation, string[] paramArray)
+        public BasePipeline<T> Register(IOpeariton<T> operation, string[] paramArray)
         {
             operation.ParamArray = paramArray;
             return Register(operation);
         }
 
-        public BasePipeline<T> Register(BaseOperation<T> operation)
+        public BasePipeline<T> Register(IOpeariton<T> operation)
         {
             _operations.Add(operation);
             Logger.Info(operation.ToString() + " added");
             return this;
         }
 
-        public BasePipeline<T> RegisterParrallel(List<BaseOperation<T>> operations)
+        public BasePipeline<T> RegisterParrallel(List<IOpeariton<T>> operations)
         {
             _operations.Add(new ParrallelOperation<T>(operations));
             Logger.Info(
