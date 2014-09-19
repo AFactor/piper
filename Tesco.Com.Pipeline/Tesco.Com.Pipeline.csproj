@@ -145,7 +145,10 @@
     <Compile Include="Entities\RangeEntities.cs" />
     <Compile Include="Entities\RequestEntities\Products.cs" />
     <Compile Include="Entities\ResponseEntites\ProductBrowse.cs" />
+    <Compile Include="Operations\NavigationOperation.cs" />
     <Compile Include="Operations\Range.cs" />
+    <Compile Include="Pipe\IPipeline.cs" />
+    <Compile Include="Pipe\NavigationPipeline.cs" />
     <Compile Include="Pipe\ProductBrowsePipeline.cs" />
     <Compile Include="Provider\Appstore\AppstoreDeviceIdentificationProvider.cs" />
     <Compile Include="Provider\Contract\IDeviceIdentificationProvider.cs" />
@@ -154,7 +157,7 @@
     <Compile Include="Controllers\ProductBrowseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Entities\ProductEntities.cs" />
-    <Compile Include="Entities\NavigationEntities.cs" />
+    <Compile Include="Entities\ResponseEntites\Navigation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

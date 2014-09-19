@@ -4,24 +4,25 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Tesco.Com.Pipeline.Entities.NavigationEntities;
+using Tesco.Com.Pipeline.Entities.ResponseEntities.Navigation;
 using Tesco.Com.Pipeline.Provider.Contract;
 using Tesco.Com.Pipeline.Provider.GAPI;
 using Tesco.Com.Pipeline.Utilities;
 using System.Threading.Tasks;
+using Tesco.Com.Pipeline.Pipe;
 
 namespace Tesco.Com.Pipeline.Controllers
 {
     public class NavigationController : ApiController
     {
-        private readonly INavigationProvider _navigationProvider;
+        //private readonly IPipeline<Navigation> _navigationPipeline;
 
         public NavigationController() { }
 
-        public NavigationController(INavigationProvider navigationProvider)
-        {
-            _navigationProvider = navigationProvider;
-        }
+        //public NavigationController(IPipeline<Navigation> navigationPipeline)
+        //{
+        //    //_navigationPipeline = navigationPipeline;
+        //}
 
 
         [System.Web.Http.HttpGet]
@@ -37,9 +38,9 @@ namespace Tesco.Com.Pipeline.Controllers
                 }
                 else
                 {
-                    return _navigationProvider.GetNavigation(type, taxonomyId, business, storeId);
+                    IEnumerable<Navigation> navigation = new NavigationPipeline(type, taxonomyId, business, storeId).Execute();
+                    return navigation.FirstOrDefault();                    
                 }
-
             }
             catch (Exception ex)
             {
@@ -54,7 +55,8 @@ namespace Tesco.Com.Pipeline.Controllers
         {
             try
             {
-                return _navigationProvider.GetNavigation(type, taxonomyId, business);
+                IEnumerable<Navigation> navigation = new NavigationPipeline(type, taxonomyId, business).Execute();
+                return navigation.FirstOrDefault();     
             }
             catch (Exception ex)
             {
