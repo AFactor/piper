@@ -4,41 +4,36 @@ using System.Linq;
 using System.Web;
 using Tesco.Com.Pipeline.Utilities;
 using Tesco.Com.Pipeline.Operations;
+
 namespace Tesco.Com.Pipeline.Pipe
 {
-<<<<<<< HEAD
-    public class BasePipeline<T> //: IPipeline<T>
-=======
-    public class BasePipeline<T>:IPipeline<T>
->>>>>>> 1208d39e9c8d17dea211f0de6c72870bc287c985
+    public abstract class BasePipeline<T> : IPipeline<T>
     {
-        private readonly List<IOpeariton<T>> _operations = new List<IOpeariton<T>>();
+        private readonly List<IOperation<T>> _operations = new List<IOperation<T>>();
 
-        public BasePipeline(){}
-        
-        public BasePipeline(List<BaseOperation<T>> operations)
-        {
-            _operations = operations;
-        }
-
-        public BasePipeline<T> Register(IOpeariton<T> operation, string[] paramArray)
+        public virtual BasePipeline<T> Register(IOperation<T> operation, string[] paramArray)
         {
             operation.ParamArray = paramArray;
             return Register(operation);
         }
 
-        public BasePipeline<T> Register(IOpeariton<T> operation)
+        public virtual BasePipeline<T> Register(string[] paramArray)
+        {
+            throw new NotImplementedException("Do not use this method in the base");
+        }
+
+        public BasePipeline<T> Register(IOperation<T> operation)
         {
             _operations.Add(operation);
             Logger.Info(operation.ToString() + " added");
             return this;
         }
 
-        public BasePipeline<T> RegisterParrallel(List<IOpeariton<T>> operations)
+        public BasePipeline<T> RegisterParrallel(List<IOperation<T>> operations)
         {
             _operations.Add(new ParrallelOperation<T>(operations));
             Logger.Info(
-                string.Join(",",operations.Select(o=>o.ToString())) + " added as parrallel steps"
+                string.Join(",",operations.Select(o=>o.ToString())) + " added as parallel steps"
             );
             return this;
         }
@@ -58,8 +53,7 @@ namespace Tesco.Com.Pipeline.Pipe
             //IEnumerator<T> enumerator = Current.GetEnumerator();
             //while (enumerator.MoveNext()) ;
             return result;
-
-        }
+        }       
     }
 }
 

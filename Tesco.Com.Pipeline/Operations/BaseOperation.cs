@@ -14,28 +14,15 @@ using Tesco.Com.Pipeline.Utilities;
 
 namespace Tesco.Com.Pipeline.Operations
 {
-
-
-    public abstract class BaseOperation<T>:IOpeariton<T>
+    public abstract class BaseOperation<T> : IOperation<T>
     {
-        
-        
         public string[] ParamArray { get; set; }
         public abstract IEnumerable<T> Execute(IEnumerable<T> input);
-        
-
-      
     }
 
-    public interface IOpeariton<T>
+    public interface IOperation<T>
     {
-
-
         string[] ParamArray { get; set; }
         IEnumerable<T> Execute(IEnumerable<T> input);
-
-
-
     }
-
 }

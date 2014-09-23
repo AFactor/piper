@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Tesco.Com.Pipeline.Entities.ResponseEntites
+namespace Tesco.Com.Pipeline.Entities.ResponseEntities
 {
     public class ProductBrowse
     {

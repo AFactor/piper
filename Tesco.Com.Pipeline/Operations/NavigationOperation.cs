@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Tesco.Com.Pipeline.Entities.ResponseEntities.Navigation;
+using Tesco.Com.Pipeline.Entities.ResponseEntities;
+using Tesco.Com.Pipeline.Operations.Contract;
 
 namespace Tesco.Com.Pipeline.Operations
 {
-    public class NavigationOperation : ApiOperation<Navigation>
+    public class NavigationOperation : ApiOperation<Navigation>, INavigationOperation
     {
+        public NavigationOperation()
+        {
+        }
+
         public override IEnumerable<Navigation> Execute(IEnumerable<Navigation> input)
         {
             Navigation navigation = new Navigation();
@@ -84,7 +89,10 @@ namespace Tesco.Com.Pipeline.Operations
 
             List<Navigation> lstNavigation = new List<Navigation>();
             lstNavigation.Add(navigation);
-            return lstNavigation;
-        }
+            //return lstNavigation;
+
+            input = lstNavigation;
+            return input;
+        }   
     }
 }

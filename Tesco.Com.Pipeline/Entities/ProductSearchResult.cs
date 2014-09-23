@@ -161,7 +161,7 @@ namespace Tesco.Com.Pipeline.Entities
 
         private string brandField;
 
-        private System.DateTime dateOfmanufactureField;
+        //private System.DateTime dateOfmanufactureField;
 
         private ProductSearchResultProductSummaryStatus statusField;
 

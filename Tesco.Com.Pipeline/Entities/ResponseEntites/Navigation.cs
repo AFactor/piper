@@ -6,7 +6,7 @@ using System.Web;
 using System.Xml.Serialization;
 using Tesco.Com.Pipeline.Utilities;
 
-namespace Tesco.Com.Pipeline.Entities.ResponseEntities.Navigation
+namespace Tesco.Com.Pipeline.Entities.ResponseEntities
 {
 
     public class Navigation

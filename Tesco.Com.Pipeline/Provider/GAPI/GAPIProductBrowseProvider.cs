@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using Tesco.Com.Pipeline.Entities.RequestEntities;
-using Tesco.Com.Pipeline.Entities.ResponseEntites;
+using Tesco.Com.Pipeline.Entities.ResponseEntities;
 using Tesco.Com.Pipeline.Provider.Contract;
 
 namespace Tesco.Com.Pipeline.Provider.GAPI
@@ -15,7 +15,7 @@ namespace Tesco.Com.Pipeline.Provider.GAPI
         private const string IMAGEHEIGHTWIDTH225 = "225";
         private const string IMAGEHEIGHTWIDTH540 = "540";
 
-        public List<Entities.ResponseEntites.ProductBrowse> GetProductList(string query, string offset, string limit, string orderByFields, string business)
+        public List<Entities.ResponseEntities.ProductBrowse> GetProductList(string query, string offset, string limit, string orderByFields, string business)
         {
             List<ProductBrowse> lstProductBrowse = new List<ProductBrowse>();
             Entities.ProductList productlist = null;

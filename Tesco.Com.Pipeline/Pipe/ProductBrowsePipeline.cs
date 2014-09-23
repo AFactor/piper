@@ -22,7 +22,7 @@ namespace Tesco.Com.Pipeline.Pipe
             //.Register(new ProductsByIdsOperation() ,new string[] { query, offset, limit, "Productinfo," + orderByFields, business })
             //.Register(new  PriceByIdOperation())
             //.Register(new PromotionSearchOperation());
-           .RegisterParrallel(new List<IOpeariton<ResultETL>>() {prodOps, new PriceByIdOperation(), new PromotionSearchOperation() });
+           .RegisterParrallel(new List<IOperation<ResultETL>>() {prodOps, new PriceByIdOperation(), new PromotionSearchOperation() });
 
         }
     }

@@ -17,7 +17,7 @@ namespace Tesco.Com.Pipeline.Pipe
         public SearchPipeline(string queryText, string pageNumber, string sort, string perPage)
         {
             Register(new ProductSearchOperation(), new string[] { queryText, sort, pageNumber, perPage })
-           .RegisterParrallel(new List<IOpeariton<ResultETL>>() {new PriceByIdOperation(),new PromotionSearchOperation()});
+           .RegisterParrallel(new List<IOperation<ResultETL>>() {new PriceByIdOperation(),new PromotionSearchOperation()});
 
         }
 

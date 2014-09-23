@@ -9,7 +9,7 @@ using Tesco.Com.Pipeline;
 using Tesco.Com.Pipeline.Controllers;
 using Tesco.Com.Pipeline.Provider.Contract;
 using Moq;
-using Tesco.Com.Pipeline.Entities.NavigationEntities;
+using Tesco.Com.Pipeline.Entities.ResponseEntities;
 using Tesco.Com.Pipeline.Utilities;
 
 namespace Tesco.Com.Pipeline.Tests.Controllers

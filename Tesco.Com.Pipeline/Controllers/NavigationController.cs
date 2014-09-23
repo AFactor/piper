@@ -4,18 +4,21 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Tesco.Com.Pipeline.Entities.ResponseEntities.Navigation;
+using Tesco.Com.Pipeline.Entities.ResponseEntities;
 using Tesco.Com.Pipeline.Provider.Contract;
 using Tesco.Com.Pipeline.Provider.GAPI;
 using Tesco.Com.Pipeline.Utilities;
 using System.Threading.Tasks;
 using Tesco.Com.Pipeline.Pipe;
+using Tesco.Com.Pipeline.Operations.Contract;
+using Tesco.Com.Pipeline.Operations;
 
 namespace Tesco.Com.Pipeline.Controllers
 {
     public class NavigationController : ApiController
     {
         //private readonly IPipeline<Navigation> _navigationPipeline;
+        //private readonly INavigationOperation _navigationOperation;
 
         public NavigationController() { }
 
@@ -24,6 +27,10 @@ namespace Tesco.Com.Pipeline.Controllers
         //    //_navigationPipeline = navigationPipeline;
         //}
 
+        //public NavigationController(INavigationOperation navigationOperation)
+        //{
+        //    _navigationOperation = navigationOperation;
+        //}
 
         [System.Web.Http.HttpGet]
         public Navigation Get(string type, string taxonomyId = "", string business = "Grocery", string storeId = "")
@@ -38,8 +45,11 @@ namespace Tesco.Com.Pipeline.Controllers
                 }
                 else
                 {
-                    IEnumerable<Navigation> navigation = new NavigationPipeline(type, taxonomyId, business, storeId).Execute();
-                    return navigation.FirstOrDefault();                    
+                    string[] arr = {type, taxonomyId, business, storeId};
+                    NavigationPipeline _navigationPipeline = new NavigationPipeline();
+                    IEnumerable<Navigation> navigation = _navigationPipeline.Register(arr).Execute();
+
+                    return navigation.FirstOrDefault();
                 }
             }
             catch (Exception ex)
@@ -55,8 +65,12 @@ namespace Tesco.Com.Pipeline.Controllers
         {
             try
             {
-                IEnumerable<Navigation> navigation = new NavigationPipeline(type, taxonomyId, business).Execute();
-                return navigation.FirstOrDefault();     
+                string[] arr = { type, taxonomyId, business };
+                //TODO: unity
+                IPipeline<Navigation> _navigationPipeline = new NavigationPipeline();                
+                IEnumerable<Navigation> navigation = _navigationPipeline.Register( arr).Execute();
+                
+                return navigation.FirstOrDefault();
             }
             catch (Exception ex)
             {

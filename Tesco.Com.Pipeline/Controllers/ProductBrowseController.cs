@@ -23,9 +23,9 @@ namespace Tesco.Com.Pipeline.Controllers
 
 
         [System.Web.Http.HttpGet]
-        public List<Entities.ResponseEntites.ProductBrowse> GetProductList(string query, string offset, string limit, string orderByFields = "Default", string business = "Grocery")
+        public List<Entities.ResponseEntities.ProductBrowse> GetProductList(string query, string offset, string limit, string orderByFields = "Default", string business = "Grocery")
         {
-            List<Entities.ResponseEntites.ProductBrowse> productBrowse = null;
+            List<Entities.ResponseEntities.ProductBrowse> productBrowse = null;
             try
             {
                 productBrowse = _productBrowseProvider.GetProductList(query, offset, limit, orderByFields, business);
