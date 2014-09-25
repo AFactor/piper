@@ -10,14 +10,9 @@ namespace Tesco.Com.Pipeline.Pipe
 {
     public class NavigationPipeline : BasePipeline<Navigation>, IPipeline<Navigation>
     {
-        INavigationOperation _navigationOperation;
+        IOperation<Navigation> _navigationOperation;
 
-        public NavigationPipeline():this(new NavigationOperation())
-        {
-            //TODO: resolve unity
-        }
-
-        public NavigationPipeline(INavigationOperation navigationOperation)
+        public NavigationPipeline(IOperation<Navigation> navigationOperation)
         {
             _navigationOperation = navigationOperation;
         }

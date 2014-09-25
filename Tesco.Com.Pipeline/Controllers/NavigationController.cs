@@ -21,15 +21,17 @@ namespace Tesco.Com.Pipeline.Controllers
 
         //public NavigationController() {}
 
-        public NavigationController()
-        {
-            _navigationPipeline = new NavigationPipeline();
-        }
-
-        //public NavigationController(IPipeline<Navigation> navigationPipeline)
+        //public NavigationController()
         //{
-        //    _navigationPipeline = navigationPipeline;
+        // //   _navigationPipeline = new NavigationPipeline();
         //}
+
+
+
+        public NavigationController(IPipeline<Navigation> navigationPipeline)
+        {
+            _navigationPipeline = navigationPipeline;
+        }
 
         [System.Web.Http.HttpGet]
         public Navigation Get(string type, string taxonomyId = "", string business = "Grocery", string storeId = "")

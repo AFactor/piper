@@ -8,7 +8,7 @@ using Tesco.Com.Pipeline.Operations.Mappers;
 
 namespace Tesco.Com.Pipeline.Operations
 {
-    public class NavigationOperation : ApiOperation<Navigation>, INavigationOperation
+    public class NavigationOperation : ApiOperation<Navigation>
     {
         //private IApiOperation _apiOperation;
         public NavigationOperation()
