@@ -17,7 +17,7 @@ namespace Tesco.Com.Pipeline.Pipe
         /// <param name="paramArray"></param>
         /// <returns></returns>
 
-        BasePipeline<T> Register(string[] paramArray);
+        IPipeline<T> Register(string[] paramArray);
 
         BasePipeline<T> Register(IOperation<T> operation);
 

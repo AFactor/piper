@@ -17,7 +17,7 @@ namespace Tesco.Com.Pipeline.Pipe
             return Register(operation);
         }
 
-        public virtual BasePipeline<T> Register(string[] paramArray)
+        public virtual IPipeline<T> Register(string[] paramArray)
         {
             throw new NotImplementedException("Do not use this method in the base");
         }

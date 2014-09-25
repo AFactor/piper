@@ -11,33 +11,39 @@ using Tesco.Com.Pipeline.Provider.Contract;
 using Moq;
 using Tesco.Com.Pipeline.Entities.ResponseEntities;
 using Tesco.Com.Pipeline.Utilities;
+using Tesco.Com.Pipeline.Pipe;
+using Tesco.Com.Pipeline.Operations;
 
 namespace Tesco.Com.Pipeline.Tests.Controllers
 {
     [TestClass]
     public class NavigationControllerTest
     {
-        private Hierarchy _hierarchy;
+        [TestMethod]
+        public void Get_NavigationWithStoreIdPassed_ReturnsHierarchy()
+        {
+            var navigationMock = new Mock<IEnumerable<Navigation>>();
+            //var baselinePipeMock = new Mock<BasePipeline<Navigation>>();
+            //var baselinePipeMock = new Mock<IPipeline<Navigation>>();
 
-        //[TestMethod]
-        //public void Get_NavigationWithStoreIdPassed_ReturnsHierarchy()
-        //{
-        //    _hierarchy = new Hierarchy();
+            navigationMock.Setup(x => x.FirstOrDefault<Navigation>()).Returns(new Navigation());
 
-        //    var navigationProviderMock = new Mock<INavigationProvider>();
-        //    navigationProviderMock.Setup(x => x.GetNavigation(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-        //        .Returns(_hierarchy);
+            var navigationPipelineMock = new Mock<IPipeline<Navigation>>();
+            navigationPipelineMock.Setup(x => x.Register(new string[] { "all", "", "Grocery", "2104" }))
+                .Returns(navigationPipelineMock.Object);
 
-        //    // Arrange
-        //    NavigationController controller = new NavigationController(navigationProviderMock.Object);
+            navigationPipelineMock.Setup(x => x.Execute()).Returns(navigationMock.Object);
 
-        //    // Act
-        //    Hierarchy hierarchy = controller.Get("all", "", "Grocery", "2103");
+            // Arrange
+            NavigationController controller = new NavigationController(navigationPipelineMock.Object);
 
-        //    // Assert
-        //    Assert.IsNotNull(hierarchy);
-        //    navigationProviderMock.VerifyAll();
-        //}
+            // Act
+            Navigation navigation = controller.Get("all", "", "Grocery", "2104");
+
+            // Assert
+            //Assert.IsNotNull(navigation);
+            navigationPipelineMock.VerifyAll();
+        }
 
         //[TestMethod]
         //public void Get_NavigationStoreIdAsNull_ReturnsHierarchy()

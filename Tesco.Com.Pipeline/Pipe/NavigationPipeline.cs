@@ -17,7 +17,7 @@ namespace Tesco.Com.Pipeline.Pipe
             _navigationOperation = navigationOperation;
         }
 
-        public override BasePipeline<Navigation> Register( string[] args)
+        public override IPipeline<Navigation> Register(string[] args)
         {
             return base.Register(_navigationOperation, args);
         }

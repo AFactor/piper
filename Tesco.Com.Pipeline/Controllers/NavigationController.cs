@@ -19,15 +19,6 @@ namespace Tesco.Com.Pipeline.Controllers
     {
         private readonly IPipeline<Navigation> _navigationPipeline;
 
-        //public NavigationController() {}
-
-        //public NavigationController()
-        //{
-        // //   _navigationPipeline = new NavigationPipeline();
-        //}
-
-
-
         public NavigationController(IPipeline<Navigation> navigationPipeline)
         {
             _navigationPipeline = navigationPipeline;
@@ -47,7 +38,6 @@ namespace Tesco.Com.Pipeline.Controllers
                 else
                 {
                     string[] arr = {type, taxonomyId, business, storeId};
-                    //NavigationPipeline _navigationPipeline = new NavigationPipeline();
                     IEnumerable<Navigation> navigation = _navigationPipeline.Register(arr).Execute();
 
                     return navigation.FirstOrDefault();
@@ -66,9 +56,7 @@ namespace Tesco.Com.Pipeline.Controllers
         {
             try
             {
-                string[] arr = { type, taxonomyId, business };
-                //TODO: unity
-                //IPipeline<Navigation> _navigationPipeline = new NavigationPipeline();                
+                string[] arr = { type, taxonomyId, business };                         
                 IEnumerable<Navigation> navigation = _navigationPipeline.Register( arr).Execute();
                 
                 return navigation.FirstOrDefault();
