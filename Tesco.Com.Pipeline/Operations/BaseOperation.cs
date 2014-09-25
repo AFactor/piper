@@ -25,4 +25,9 @@ namespace Tesco.Com.Pipeline.Operations
         string[] ParamArray { get; set; }
         IEnumerable<T> Execute(IEnumerable<T> input);
     }
+
+    //public interface IApiOperation
+    //{
+    //    object FromApi(string name, string body, params string[] queryParams);
+    //}
 }

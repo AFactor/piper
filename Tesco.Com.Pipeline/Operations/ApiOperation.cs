@@ -106,8 +106,6 @@ namespace Tesco.Com.Pipeline.Operations
             }
         }
 
-
-
         public object FromApi(string name, string body, params string[] queryParams)
         {
             ApiConfigurationElement element = ApiHelper.GetApiForKey(name, "gapi");

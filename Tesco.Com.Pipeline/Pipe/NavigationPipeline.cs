@@ -26,7 +26,5 @@ namespace Tesco.Com.Pipeline.Pipe
         {
             return base.Register(_navigationOperation, args);
         }
-
-
     }
 }

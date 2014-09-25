@@ -22,7 +22,7 @@ namespace Tesco.Com.Pipeline.Provider.GAPI
             List<uint> productIds = new List<uint>();
 
             // Fetch ProductIds for requested ProductBrowse page
-            productlist = (Entities.ProductList)FromApi("AnonymousProductBrowseRangeSearch", string.Empty,
+            productlist = (Entities.ProductList)FromApi("AnonymousProductBrowseRangeSearch1", string.Empty,
                 new string[] { query, offset, limit, orderByFields, business });
             
             if (productlist != null && productlist.ResultSubSet != null)
@@ -45,7 +45,7 @@ namespace Tesco.Com.Pipeline.Provider.GAPI
                     new string[] { DateTime.Today.ToString("yyyy-MM-dd"), DateTime.Today.ToString("yyyy-MM-dd"), "None", business });
 
                 // Fetch Product properties for a list of ProductIds, make it Async
-                Entities.ProductSearchResult productSearchResult = (Entities.ProductSearchResult)FromApi("AnonymousProductBrowseProductSearch", string.Empty,
+                Entities.ProductSearchResult productSearchResult = (Entities.ProductSearchResult)FromApi("AnonymousProductBrowseProductSearch1", string.Empty,
                     new string[] { q.ToString(), offset, limit, "Productinfo," + orderByFields, business });
 
                 if (productSearchResult!= null && productSearchResult.TotalMatchedCount > 0)

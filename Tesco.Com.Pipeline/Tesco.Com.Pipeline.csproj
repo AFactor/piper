@@ -146,6 +146,7 @@
     <Compile Include="Entities\RequestEntities\Products.cs" />
     <Compile Include="Entities\ResponseEntites\ProductBrowse.cs" />
     <Compile Include="Operations\Contract\INavigationOperation.cs" />
+    <Compile Include="Operations\Mappers\NavigationMapper.cs" />
     <Compile Include="Operations\NavigationOperation.cs" />
     <Compile Include="Operations\Range.cs" />
     <Compile Include="Pipe\IPipeline.cs" />

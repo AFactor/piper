@@ -41,6 +41,15 @@ namespace Tesco.Com.Pipeline
                     action = "Browse"
                 });
 
+            config.Routes.MapHttpRoute(null, "ProductBrowse",
+                new
+                {
+                    controller = "ProductBrowse",
+                    action = "GetProductList"
+                });
+
+            
+
             config.Routes.MapHttpRoute(null, "DeviceIdentification/",
                 new
                 {

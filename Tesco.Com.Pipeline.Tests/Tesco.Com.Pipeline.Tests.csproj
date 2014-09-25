@@ -99,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NavigationControllerTest.cs" />
+    <Compile Include="Operations\NavigationOperationTest.cs" />
+    <Compile Include="Pipeline\NavigationPipelineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
