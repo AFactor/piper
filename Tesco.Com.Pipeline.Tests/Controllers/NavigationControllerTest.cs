@@ -23,16 +23,13 @@ namespace Tesco.Com.Pipeline.Tests.Controllers
         public void Get_NavigationWithStoreIdPassed_ReturnsHierarchy()
         {
             var navigationMock = new Mock<IEnumerable<Navigation>>();
-            //var baselinePipeMock = new Mock<BasePipeline<Navigation>>();
-            //var baselinePipeMock = new Mock<IPipeline<Navigation>>();
-
-            navigationMock.Setup(x => x.FirstOrDefault<Navigation>()).Returns(new Navigation());
+            IEnumerable<Navigation> nav = new List<Navigation>() {new Navigation(){ShopGroceries = new Hierarchy()}};
 
             var navigationPipelineMock = new Mock<IPipeline<Navigation>>();
             navigationPipelineMock.Setup(x => x.Register(new string[] { "all", "", "Grocery", "2104" }))
                 .Returns(navigationPipelineMock.Object);
 
-            navigationPipelineMock.Setup(x => x.Execute()).Returns(navigationMock.Object);
+            navigationPipelineMock.Setup(x => x.Execute()).Returns(nav);
 
             // Arrange
             NavigationController controller = new NavigationController(navigationPipelineMock.Object);
@@ -41,45 +38,51 @@ namespace Tesco.Com.Pipeline.Tests.Controllers
             Navigation navigation = controller.Get("all", "", "Grocery", "2104");
 
             // Assert
-            //Assert.IsNotNull(navigation);
+            Assert.IsNotNull(navigation);
+            navigationPipelineMock.VerifyAll();
+        }
+
+        [TestMethod]
+        public void Get_NavigationStoreIdAsNull_ReturnsNavigation()
+        {
+            var navigationMock = new Mock<IEnumerable<Navigation>>();
+            IEnumerable<Navigation> nav = new List<Navigation>() { new Navigation() { ShopGroceries = new Hierarchy() } };
+
+            var navigationPipelineMock = new Mock<IPipeline<Navigation>>();
+            navigationPipelineMock.Setup(x => x.Register(new string[] { "all", "", "Grocery"}))
+                .Returns(navigationPipelineMock.Object);
+
+            navigationPipelineMock.Setup(x => x.Execute()).Returns(nav);
+
+            // Arrange
+            NavigationController controller = new NavigationController(navigationPipelineMock.Object);
+
+            // Act
+            Navigation navigation = controller.Get("all", "", "Grocery", "");
+
+            // Assert
+            Assert.IsNotNull(navigation);
             navigationPipelineMock.VerifyAll();
         }
 
         //[TestMethod]
-        //public void Get_NavigationStoreIdAsNull_ReturnsHierarchy()
-        //{
-        //    _hierarchy = new Hierarchy();
-
-        //    var navigationProviderMock = new Mock<INavigationProvider>();
-        //    navigationProviderMock.Setup(x => x.GetNavigation(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-        //        .Returns(_hierarchy);
-
-        //    // Arrange
-        //    NavigationController controller = new NavigationController(navigationProviderMock.Object);
-
-        //    // Act
-        //    Hierarchy hierarchy = controller.Get("all", "", "Grocery", "");
-
-        //    // Assert
-        //    Assert.IsNotNull(hierarchy);
-        //    navigationProviderMock.VerifyAll();
-        //}
-
-        //[TestMethod]
         //[ExpectedException(typeof(Exception))]
-        //public void Get_AnonymousNavigationWithStoreIdPassed_ThrowsException()
+        //public void Get_Navigation_With_Null_ThrowsException()
         //{
-        //    _hierarchy = new Hierarchy(); 
+        //    var navigationMock = new Mock<IEnumerable<Navigation>>();
+        //    //IEnumerable<Navigation> nav = new List<Navigation>() { new Navigation() { ShopGroceries = new Hierarchy() } };
 
-        //    var navigationProviderMock = new Mock<INavigationProvider>();
-        //    navigationProviderMock.Setup(x => x.GetNavigation(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-        //        .Throws<Exception>();
+        //    var navigationPipelineMock = new Mock<IPipeline<Navigation>>();
+        //    navigationPipelineMock.Setup(x => x.Register(new string[] { "all", "", "Grocery" }))
+        //        .Returns(navigationPipelineMock.Object);
+
+        //    navigationPipelineMock.Setup(x => x.Execute()).Returns(navigationMock.Object);
 
         //    // Arrange
-        //    NavigationController controller = new NavigationController(navigationProviderMock.Object);
+        //    NavigationController controller = new NavigationController(navigationPipelineMock.Object);
 
         //    // Act
-        //    Hierarchy hierarchy = controller.Get("all", "", "Grocery", "1111");
+        //    Navigation navigation = controller.Get("all", "", "Grocery", "");
         //}
     }
 }

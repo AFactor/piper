@@ -20,6 +20,7 @@ namespace Tesco.Com.Pipeline.Pipe
         public override IPipeline<Navigation> Register(string[] args)
         {
             return base.Register(_navigationOperation, args);
+
         }
     }
 }
