@@ -8,22 +8,24 @@ namespace Tesco.Com.Pipeline.Operations.Mappers
 {
     public static class NavigationMapper
     {
-        public static List<Entity.Navigation> MapAPIResponse(Entity.Hierarchy apiHierarchy)
+        public static List<Entity.Navigation> MapNavigationCMSResponse(IEnumerable<Entity.Navigation> toInput)
         {
+            Entity.Hierarchy hierarchy = new Entity.Hierarchy();
             Entity.Navigation navigation = new Entity.Navigation();
-            apiHierarchy.Name = "Shop Groceries";
+
+            hierarchy.Name = "Shop Groceries";
             List<Entity.Hero> lstHero = new List<Entity.Hero>();
             lstHero.Add(new Entity.Hero { Value = "Bakery" });
             lstHero.Add(new Entity.Hero { Value = "Butcher" });
             lstHero.Add(new Entity.Hero { Value = "Cheese monger" });
             lstHero.Add(new Entity.Hero { Value = "Off Licence" });
             lstHero.Add(new Entity.Hero { Value = "Pet Shop" });
-            apiHierarchy.Hero = lstHero;
-            navigation.ShopGroceries = apiHierarchy;
+            hierarchy.Hero = lstHero;
+            navigation.ShopGroceries = hierarchy;
 
             List<Entity.Child> childs;
 
-            Entity.Hierarchy hierarchy = new Entity.Hierarchy();
+            hierarchy = new Entity.Hierarchy();
             hierarchy.Name = "My Shopping";
             childs = new List<Entity.Child>();
             childs.Add(new Entity.Child { Name = "My Favourites" });

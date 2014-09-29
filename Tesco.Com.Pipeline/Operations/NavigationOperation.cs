@@ -8,16 +8,25 @@ using Tesco.Com.Pipeline.Operations.Mappers;
 
 namespace Tesco.Com.Pipeline.Operations.Navigation
 {
-    public class NavigationOperation : ApiOperation<Entity.Navigation>
+    public class NavigationAPIOperation : ApiOperation<Entity.Navigation>
     {
-        public NavigationOperation(){}
+        public NavigationAPIOperation(){}
 
         public override IEnumerable<Entity.Navigation> Execute(IEnumerable<Entity.Navigation> input)
         {
             Entity.Hierarchy hierarchy = (Entity.Hierarchy)FromApi("NavigationAnonymous", string.Empty, ParamArray);
-            input = NavigationMapper.MapAPIResponse(hierarchy);
             return input;
         }
     }
-    
+
+    public class NavigationCMSOperation : ApiOperation<Entity.Navigation>
+    {
+        public NavigationCMSOperation() { }
+
+        public override IEnumerable<Entity.Navigation> Execute(IEnumerable<Entity.Navigation> input)
+        {
+            input = NavigationMapper.MapNavigationCMSResponse(input);
+            return input;
+        }
+    }
 }

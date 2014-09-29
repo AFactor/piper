@@ -10,17 +10,17 @@ namespace Tesco.Com.Pipeline.Pipe
 {
     public class NavigationPipeline : BasePipeline<Navigation>, IPipeline<Navigation>
     {
-        IOperation<Navigation> _navigationOperation;
+        IOperation<Navigation> _navigationAPIOperation, _navigationCMSOperation;
 
-        public NavigationPipeline(IOperation<Navigation> navigationOperation)
+        public NavigationPipeline(IOperation<Navigation> navigationAPIOperation)//, IOperation<Navigation> navigationCMSOperation)
         {
-            _navigationOperation = navigationOperation;
+            _navigationAPIOperation = navigationAPIOperation;
+            //_navigationCMSOperation = navigationCMSOperation;
         }
 
         public override IPipeline<Navigation> Register(string[] args)
         {
-            return base.Register(_navigationOperation, args);
-
+            return base.Register(_navigationAPIOperation, args);
         }
     }
 }
