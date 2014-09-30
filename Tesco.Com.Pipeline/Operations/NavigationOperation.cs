@@ -15,6 +15,7 @@ namespace Tesco.Com.Pipeline.Operations.Navigation
         public override IEnumerable<Entity.Navigation> Execute(IEnumerable<Entity.Navigation> input)
         {
             Entity.Hierarchy hierarchy = (Entity.Hierarchy)FromApi("NavigationAnonymous", string.Empty, ParamArray);
+            input = NavigationMapper.MapNavigationCMSResponse(input);
             return input;
         }
     }
